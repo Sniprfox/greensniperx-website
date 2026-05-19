@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GreenSniperX — Your Money Should Work Harder.</title>
+  <meta name="description" content="GreenSniperX gives everyday people access to precision trading strategies — fully automatic, no experience needed. Start free for 7 days."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --green:#059669;
+      --green-hover:#047857;
+      --green-pale:#ecfdf5;
+      --green-border:#a7f3d0;
+      --gold:#b45309;
+      --gold-pale:#fffbeb;
+      --text:#111827;
+      --text2:#374151;
+      --muted:#6b7280;
+      --muted2:#9ca3af;
+      --border:#e5e7eb;
+      --border2:#d1d5db;
+      --surface:#f9fafb;
+      --surface2:#f3f4f6;
+      --dark:#0f172a;
+      --dark2:#1e293b;
+    }
+    html{scroll-behavior:smooth}
+    body{background:#fff;color:var(--text);font-family:'Inter',sans-serif;font-size:17px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+
+    /* ── SIMPLE MODE ── */
+    body.simple .std{display:none!important}
+    body.simple .smp{display:block!important}
+    body:not(.simple) .std{display:block}
+    body:not(.simple) .smp{display:none!important}
+    body.simple span.std{display:none!important}
+    body.simple span.smp{display:inline!important}
+    body:not(.simple) span.std{display:inline}
+    body:not(.simple) span.smp{display:none!important}
+
+    /* ── BUTTONS ── */
+    .btn{font-family:'Inter',sans-serif;font-weight:600;cursor:pointer;border:none;transition:all 0.18s;display:inline-flex;align-items:center;gap:8px;letter-spacing:-0.1px;border-radius:10px}
+    .btn-lg{font-size:1rem;padding:0.85rem 1.75rem}
+    .btn-sm{font-size:0.85rem;padding:0.48rem 1rem}
+    .btn-primary{background:var(--green);color:#fff;box-shadow:0 1px 3px rgba(5,150,105,0.3)}
+    .btn-primary:hover{background:var(--green-hover);transform:translateY(-1px);box-shadow:0 4px 14px rgba(5,150,105,0.35)}
+    .btn-outline{background:transparent;color:var(--green);border:1.5px solid var(--green-border)}
+    .btn-outline:hover{background:var(--green-pale)}
+    .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border2)}
+    .btn-ghost:hover{color:var(--green);border-color:var(--green-border)}
+
+    /* ── MODE BAR ── */
+    .mode-bar{background:var(--dark);padding:0.55rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .mode-msg{font-size:0.8rem;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif}
+    .mode-msg strong{color:#34d399}
+    .mode-toggle-wrap{display:flex;align-items:center;gap:0.75rem}
+    .mode-lbl{font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.35);transition:color 0.2s;white-space:nowrap;font-family:'Inter',sans-serif}
+    .mode-lbl.on{color:#34d399}
+    .tgl{position:relative;width:48px;height:26px;cursor:pointer;flex-shrink:0}
+    .tgl input{opacity:0;width:0;height:0;position:absolute}
+    .tgl-track{position:absolute;inset:0;background:#1e293b;border:1px solid rgba(52,211,153,0.2);border-radius:13px;transition:all 0.3s}
+    .tgl-track::after{content:'';position:absolute;left:3px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#374151;transition:all 0.3s}
+    .tgl input:checked~.tgl-track{background:#059669;border-color:#059669}
+    .tgl input:checked~.tgl-track::after{left:calc(100% - 21px);background:#fff}
+
+    /* ── NAV ── */
+    nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(255,255,255,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(16px)}
+    .logo{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-0.5px;cursor:pointer}
+    .logo span{color:var(--green)}
+    .nav-links{display:flex;gap:2rem}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.18s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-right{display:flex;gap:0.75rem;align-items:center}
+    .nav-login{color:var(--muted);font-size:0.9rem;font-weight:500;text-decoration:none;transition:color 0.18s}
+    .nav-login:hover{color:var(--text)}
+
+    /* ── TICKER ── */
+    .ticker{background:var(--dark);overflow:hidden;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .ticker-track{display:flex;gap:3rem;animation:ticker-scroll 28s linear infinite;white-space:nowrap;width:max-content}
+    @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .tick{font-family:'Inter',monospace;font-size:0.7rem;font-weight:500;letter-spacing:0.3px}
+    .tick.up{color:#34d399}.tick.dn{color:#f87171}
+
+    /* ── HERO ── */
+    .hero{padding:7rem 2rem 5rem;background:#fff;position:relative;overflow:hidden}
+    .hero-grid-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(5,150,105,0.06) 1px,transparent 1px);background-size:28px 28px;z-index:0}
+    .hero-glow{position:absolute;right:-5%;top:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(5,150,105,0.06) 0%,transparent 70%);z-index:0;pointer-events:none}
+    .hero-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:5rem;align-items:center}
+
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:0.82rem;font-weight:600;color:var(--green);background:var(--green-pale);padding:0.3rem 0.85rem;border-radius:20px;border:1px solid var(--green-border);margin-bottom:1.75rem;letter-spacing:0.1px}
+    .hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 1.8s infinite}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+
+    .hero h1{font-family:'Manrope',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.1;color:var(--text);margin-bottom:1.25rem;letter-spacing:-1.5px}
+    .hero h1 .g{color:var(--green)}
+    .hero-sub{font-size:1.15rem;color:var(--text2);font-weight:500;margin-bottom:0.75rem;line-height:1.6;max-width:480px}
+    .hero-desc{font-size:1rem;color:var(--muted);line-height:1.8;max-width:470px;margin-bottom:1.1rem}
+    .hero-autopilot{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:470px;margin-bottom:2rem;padding-left:1rem;border-left:2px solid var(--border2)}
+    .hero-cta{display:flex;gap:0.85rem;flex-wrap:wrap;margin-bottom:1.25rem}
+    .hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:0.6rem;font-size:0.82rem;color:var(--muted2)}
+    .td{width:3px;height:3px;border-radius:50%;background:var(--border2);flex-shrink:0}
+
+    /* PERF CARD */
+    .perf-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.75rem;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
+    .perf-live-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:600;color:var(--green);background:var(--green-pale);padding:0.2rem 0.65rem;border-radius:20px;margin-bottom:1rem}
+    .perf-live-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse-dot 1.8s infinite}
+    .perf-big{font-family:'Manrope',sans-serif;font-size:2.8rem;font-weight:800;color:var(--text);line-height:1;margin-bottom:0.2rem;letter-spacing:-1px}
+    .perf-note{font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem}
+    .bar-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.65rem}
+    .bar-name{font-size:0.8rem;font-weight:500;color:var(--text2);min-width:78px}
+    .bar-bg{flex:1;height:5px;background:var(--surface2);border-radius:99px}
+    .bar-fill{height:100%;border-radius:99px;background:var(--green)}
+    .bar-fill.gold{background:#f59e0b}
+    .bar-val{font-size:0.75rem;font-weight:600;color:var(--green);min-width:34px;text-align:right}
+    .bar-val.gold{color:var(--gold)}
+    .perf-disc{font-size:0.72rem;color:var(--muted2);line-height:1.55;border-top:1px solid var(--border);padding-top:0.85rem;margin-top:1rem}
+
+    /* ── PROOF STRIP ── */
+    .proof-strip{background:var(--dark);padding:2.5rem 2rem}
+    .proof-grid{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+    .pstat{text-align:center}
+    .pstat .num{font-family:'Manrope',sans-serif;font-size:2rem;font-weight:800;color:#fff;line-height:1;margin-bottom:0.25rem;letter-spacing:-0.5px}
+    .pstat .lbl{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.3px}
+    .pstat .slbl{display:none;font-size:0.8rem;color:rgba(255,255,255,0.45);margin-top:0.3rem}
+    body.simple .pstat .slbl{display:block}
+
+    /* ── SHARED SECTION ── */
+    .sec-eyebrow{display:inline-block;font-size:0.78rem;font-weight:600;color:var(--green);letter-spacing:0.3px;margin-bottom:0.65rem}
+    .sec-title{font-family:'Manrope',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;line-height:1.15;color:var(--text);margin-bottom:0.6rem;letter-spacing:-0.5px}
+    .sec-sub{font-size:1rem;color:var(--muted);max-width:520px;line-height:1.75}
+    .sec-plain{font-size:1.05rem;color:var(--text2);font-weight:500;margin-bottom:0.5rem}
+    .sec-head{text-align:center;margin-bottom:3.5rem}
+    .sec-head .sec-sub,.sec-head .sec-plain{margin:0 auto}
+    section{padding:6rem 2rem}
+
+    /* ── GLOSSARY ── */
+    .glossary{display:none;background:var(--gold-pale);border-top:1px solid #fde68a;border-bottom:1px solid #fde68a;padding:3rem 2rem}
+    body.simple .glossary{display:block}
+    .glossary h3{font-family:'Manrope',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;text-align:center;letter-spacing:-0.3px}
+    .glossary .gsub{text-align:center;font-size:0.92rem;color:var(--gold);margin-bottom:2rem}
+    .glossary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:840px;margin:0 auto}
+    .gitem{background:#fff;border:1px solid #fde68a;border-left:3px solid #f59e0b;padding:1.1rem 1.25rem;border-radius:8px}
+    .gitem h4{font-size:0.95rem;font-weight:600;color:var(--text);margin-bottom:0.35rem}
+    .gitem p{font-size:0.85rem;color:var(--text2);line-height:1.65}
+
+    /* ── WHO IS THIS FOR ── */
+    .who-section{background:#fff}
+    .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1000px;margin:0 auto}
+    .who-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.6rem 1.4rem;transition:all 0.2s;cursor:default}
+    .who-card:hover{border-color:var(--green-border);transform:translateY(-2px);box-shadow:0 8px 24px rgba(5,150,105,0.08)}
+    .who-icon{width:44px;height:44px;border-radius:10px;background:var(--green-pale);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+    .who-icon i{font-size:22px;color:var(--green)}
+    .who-role{font-size:0.72rem;font-weight:700;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.3rem}
+    .who-plain{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;line-height:1.35;letter-spacing:-0.2px}
+    .who-body{font-size:0.88rem;color:var(--muted);line-height:1.7}
+
+    /* ── HOW IT WORKS ── */
+    .how-section{background:var(--surface)}
+    .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:980px;margin:0 auto;align-items:start}
+    .steps-list{display:flex;flex-direction:column}
+    .step-item{display:flex;gap:1.25rem;padding:1.25rem 0;border-bottom:1px solid var(--border)}
+    .step-item:last-child{border-bottom:none}
+    .step-num{font-family:'Manrope',sans-serif;font-size:1.2rem;font-weight:800;color:var(--green-border);line-height:1;flex-shrink:0;width:32px;margin-top:3px;letter-spacing:-0.5px}
+    .step-body h4{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:0.3rem}
+    .step-body p{font-size:0.88rem;color:var(--muted);line-height:1.7}
+
+    .feat-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+    .feat-card-label{font-size:0.72rem;font-weight:700;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem}
+    .feat-list{list-style:none}
+    .feat-list li{font-size:0.9rem;color:var(--text2);padding:0.6rem 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:0.65rem;line-height:1.5}
+    .feat-list li:last-child{border-bottom:none}
+    .feat-check{width:18px;height:18px;border-radius:50%;background:var(--green-pale);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:10px;color:var(--green)}
+    .feat-check.gold{background:var(--gold-pale);border-color:#fde68a;color:var(--gold)}
+    .feat-body .fl{font-weight:500;color:var(--text)}
+    .feat-body .fd{font-size:0.8rem;color:var(--muted);margin-top:2px}
+
+    /* ── PRICING ── */
+    .pricing-section{background:#fff}
+    .price-wrap{max-width:520px;margin:0 auto}
+    .price-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:2.5rem;box-shadow:0 8px 32px rgba(0,0,0,0.08);position:relative}
+    .price-pop{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:0.72rem;font-weight:600;padding:0.25rem 1.1rem;border-radius:0 0 10px 10px;letter-spacing:0.3px;white-space:nowrap}
+    .price-name{font-size:0.82rem;font-weight:600;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.75rem;margin-top:0.5rem}
+    .price-amount{font-family:'Manrope',sans-serif;font-size:3.5rem;font-weight:800;color:var(--text);line-height:1;letter-spacing:-2px;margin-bottom:0.25rem}
+    .price-amount sub{font-size:1rem;color:var(--muted);font-weight:500;letter-spacing:0;font-family:'Inter',sans-serif}
+    .price-cancel{font-size:0.88rem;color:var(--muted);margin-bottom:1.5rem}
+    .price-divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0}
+    .price-feats{list-style:none;margin-bottom:2rem}
+    .price-feats li{font-size:0.92rem;color:var(--text2);padding:0.5rem 0;display:flex;align-items:flex-start;gap:0.7rem;border-bottom:1px solid var(--surface2);line-height:1.5}
+    .price-feats li:last-child{border-bottom:none}
+    .pf-icon{flex-shrink:0;margin-top:2px;font-size:0.78rem;font-weight:700}
+    .pf-icon.g{color:var(--green)}
+    .pf-icon.gd{color:var(--gold)}
+    .price-btn{width:100%;padding:1rem;background:var(--green);color:#fff;border:none;font-size:1rem;font-weight:600;cursor:pointer;border-radius:12px;transition:all 0.18s;margin-bottom:0.85rem;font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(5,150,105,0.3)}
+    .price-btn:hover{background:var(--green-hover);box-shadow:0 6px 20px rgba(5,150,105,0.35);transform:translateY(-1px)}
+    .price-note{font-size:0.78rem;color:var(--muted2);text-align:center;line-height:1.6}
+
+    /* UPSELL */
+    .upsell-strip{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-top:1.25rem;display:flex;align-items:center;gap:1.25rem}
+    .upsell-left{flex:1}
+    .upsell-tag{font-size:0.72rem;font-weight:700;color:var(--gold);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.3rem}
+    .upsell-title{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.25rem;letter-spacing:-0.2px}
+    .upsell-desc{font-size:0.85rem;color:var(--muted);line-height:1.6}
+    .upsell-price{text-align:right;flex-shrink:0}
+    .upsell-amount{font-family:'Manrope',sans-serif;font-size:1.6rem;font-weight:800;color:var(--text);letter-spacing:-0.5px}
+    .upsell-once{font-size:0.75rem;color:var(--muted);margin-bottom:0.5rem}
+    .upsell-btn{background:#fff;color:var(--green);border:1.5px solid var(--green-border);font-size:0.82rem;font-weight:600;padding:0.45rem 1rem;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.18s;white-space:nowrap}
+    .upsell-btn:hover{background:var(--green-pale)}
+
+    /* ── TESTIMONIALS ── */
+    .testi-section{background:var(--surface)}
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1000px;margin:0 auto 1rem}
+    .testi-hidden{display:none}
+    .testi-grid.revealed{display:grid;animation:fadeup 0.35s ease}
+    @keyframes fadeup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .testi{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.6rem;box-shadow:0 2px 10px rgba(0,0,0,0.04);display:flex;flex-direction:column}
+    .testi-stars{color:#f59e0b;font-size:0.9rem;letter-spacing:2px;margin-bottom:0.85rem}
+    .testi blockquote{font-size:0.9rem;color:var(--text2);line-height:1.75;font-style:normal;flex:1;margin-bottom:1rem;border:none;padding:0}
+    .testi-divider{border:none;border-top:1px solid var(--border);margin-bottom:0.85rem}
+    .testi-name{font-size:0.92rem;font-weight:600;color:var(--text);margin-bottom:2px}
+    .testi-role{font-size:0.78rem;color:var(--muted);line-height:1.5}
+    .testi-win{font-size:0.78rem;font-weight:600;color:var(--green);margin-top:0.4rem}
+    .testi-more-wrap{text-align:center;margin-top:1.75rem}
+    .testi-more-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border2);color:var(--text2);font-size:0.9rem;font-weight:600;padding:0.65rem 1.5rem;border-radius:10px;cursor:pointer;transition:all 0.18s;font-family:'Inter',sans-serif;margin-bottom:0.5rem}
+    .testi-more-btn:hover{border-color:var(--green-border);color:var(--green);background:var(--green-pale)}
+    .testi-more-btn.hidden{display:none}
+    .testi-count{font-size:0.8rem;color:var(--muted2);display:block}
+
+    /* ── DEMO SECTION ── */
+    .demo-section{background:var(--surface);padding:6rem 2rem}
+    .demo-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:1.25rem}
+    .demo-tab{padding:0.5rem 1.25rem;border:1px solid var(--border2);border-radius:99px;font-size:0.88rem;font-weight:600;color:var(--muted);cursor:pointer;background:#fff;transition:all 0.18s;font-family:'Inter',sans-serif}
+    .demo-tab:hover{border-color:var(--green-border);color:var(--green)}
+    .demo-tab.active{background:var(--green);color:#fff;border-color:var(--green)}
+    .demo-simple-bar{display:none;align-items:flex-start;gap:10px;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:0.85rem 1.1rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto;font-size:0.88rem;color:#7c2d12;line-height:1.65}
+    body.simple .demo-simple-bar{display:flex}
+    .dsb-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+    .demo-panels{max-width:1000px;margin:0 auto}
+    .demo-panel{display:none}.demo-panel.show{display:block}
+    .demo-shell{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
+    .demo-topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0.7rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .demo-logo{font-family:'Manrope',sans-serif;font-size:0.9rem;font-weight:800;color:var(--text);letter-spacing:-0.3px}
+    .demo-logo span{color:var(--green)}
+    .demo-live-pill{display:inline-flex;align-items:center;gap:5px;background:var(--green-pale);color:var(--green);font-size:0.72rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:99px;border:1px solid var(--green-border)}
+    .demo-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse-dot 1.5s infinite;flex-shrink:0}
+    .demo-date{font-size:0.75rem;color:var(--muted);margin-left:auto}
+    .demo-stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+    .demo-stat{padding:0.85rem 1.1rem;border-right:1px solid var(--border)}
+    .demo-stat:last-child{border-right:none}
+    .ds-label{font-size:0.72rem;color:var(--muted);margin-bottom:4px}
+    .ds-val{font-family:'Manrope',sans-serif;font-size:1.3rem;font-weight:800;color:var(--text);letter-spacing:-0.5px}
+    .demo-body{display:grid;grid-template-columns:1fr 1fr;border-top:0px}
+    .demo-col{padding:1.1rem 1.25rem;border-right:1px solid var(--border)}
+    .demo-col:last-child{border-right:none}
+    .demo-col-label{font-size:0.7rem;font-weight:700;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.6rem}
+    .demo-chart{height:80px;background:var(--surface);border-radius:8px;overflow:hidden;padding:6px;margin-bottom:1rem}
+    .demo-floor-wrap{margin-bottom:0.5rem}
+    .demo-floor-header{display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;font-weight:500;color:var(--text);margin-bottom:6px}
+    .demo-locked-badge{display:inline-flex;align-items:center;gap:4px;font-size:0.7rem;font-weight:700;color:var(--green);background:var(--green-pale);padding:2px 7px;border-radius:99px;border:1px solid var(--green-border)}
+    .demo-floor-bg{height:8px;background:var(--surface2);border-radius:99px;position:relative;overflow:visible;margin-bottom:4px}
+    .demo-floor-fill{height:100%;border-radius:99px;background:var(--green)}
+    .demo-floor-marker{position:absolute;top:-3px;height:14px;width:2px;background:#b45309;border-radius:1px}
+    .demo-floor-steps{display:flex;justify-content:space-between;font-size:0.68rem;color:var(--muted2)}
+    .fls-on{color:var(--green);font-weight:700}
+    .demo-trades{display:flex;flex-direction:column;gap:5px}
+    .demo-trade{display:flex;align-items:center;gap:7px;padding:7px 9px;background:var(--surface);border:1px solid var(--border);border-radius:8px;flex-wrap:wrap}
+    .dt-side{font-size:0.68rem;font-weight:700;padding:2px 6px;border-radius:4px;flex-shrink:0}
+    .dt-side.buy{background:var(--green-pale);color:var(--green)}
+    .dt-side.sell{background:#fef2f2;color:#dc2626}
+    .dt-sym{font-size:0.8rem;font-weight:600;color:var(--text);min-width:58px}
+    .dt-info{font-size:0.75rem;color:var(--muted);flex:1}
+    .dt-floor{font-size:0.68rem;color:#b45309;background:#fffbeb;padding:1px 6px;border-radius:4px;border:1px solid #fde68a;white-space:nowrap}
+    .dt-pnl{font-size:0.8rem;font-weight:700}
+    .dt-pnl.up{color:var(--green)}
+    .demo-strategies{display:flex;flex-direction:column;gap:5px;margin-bottom:0.85rem}
+    .demo-strat{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;background:#fff}
+    .active-s{border-color:var(--green-border)}
+    .paused-s{border-color:#fde68a;background:#fffbeb}
+    .demo-active-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse-dot 1.5s infinite}
+    .demo-pause-dot{width:7px;height:7px;border-radius:50%;background:#b45309;flex-shrink:0}
+    .demo-strat-name{font-size:0.85rem;font-weight:600;color:var(--text);min-width:72px}
+    .demo-strat-info{font-size:0.75rem;color:var(--muted);flex:1}
+    .demo-strat-pnl{font-size:0.8rem;font-weight:700;color:var(--green)}
+    .demo-strat-pause{font-size:0.72rem;font-weight:600;color:#b45309}
+    .demo-shield-note{background:var(--green-pale);border:1px solid var(--green-border);border-radius:8px;padding:0.65rem 0.85rem;font-size:0.82rem;color:#065f46;line-height:1.6;display:flex;align-items:flex-start;gap:7px}
+    .demo-shield-note svg{flex-shrink:0;margin-top:2px;stroke:#059669}
+    /* signal panel */
+    .demo-sig-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+    .demo-sig-badge{display:inline-block;font-size:0.72rem;font-weight:600;color:var(--green);background:var(--green-pale);padding:0.2rem 0.65rem;border-radius:99px;border:1px solid var(--green-border);margin-bottom:4px}
+    .demo-sig-strat{font-size:0.78rem;color:var(--muted)}
+    .demo-sig-sym{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;color:var(--text)}
+    .demo-sig-price{font-family:'Manrope',sans-serif;font-size:1.6rem;font-weight:800;color:var(--green);letter-spacing:-0.5px}
+    .demo-sig-chg{font-size:0.78rem;font-weight:600;color:var(--green)}
+    .demo-sig-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+    .demo-sig-cell{background:var(--surface);border-radius:8px;padding:0.6rem 0.75rem}
+    .demo-sig-val{font-size:0.95rem;font-weight:700;color:var(--text)}
+    .demo-contracts-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:0.85rem;color:var(--text2);font-weight:500}
+    .demo-ctrl{display:flex;align-items:center;gap:8px}
+    .demo-c-btn{width:26px;height:26px;border:1px solid var(--border2);background:var(--surface);border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;color:var(--text);display:flex;align-items:center;justify-content:center}
+    #d-cnum{font-size:1rem;font-weight:700;color:var(--text);min-width:18px;text-align:center}
+    .demo-cost-row{display:flex;justify-content:space-between;font-size:0.82rem;color:var(--muted);margin-bottom:12px}
+    .demo-exec-btn{width:100%;padding:0.75rem;background:var(--green);color:#fff;border:none;border-radius:10px;font-size:0.92rem;font-weight:600;cursor:pointer;margin-bottom:6px;font-family:'Inter',sans-serif}
+    .demo-skip-btn{width:100%;padding:0.55rem;background:transparent;color:var(--muted);border:1px solid var(--border2);border-radius:8px;font-size:0.82rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+    .demo-floor-steps-list{display:flex;flex-direction:column;gap:6px}
+    .dfs-row{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:var(--text2);padding:8px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--border);line-height:1.5}
+    .dfs-row svg{flex-shrink:0;margin-top:2px}
+    .dfs-row.locked{background:var(--green-pale);border-color:var(--green-border);color:#065f46}
+    .dfs-row.next{background:#fffbeb;border-color:#fde68a;color:#7c2d12}
+    .dfs-empty-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--border2);flex-shrink:0;margin-top:2px}
+    /* sms panel */
+    .demo-phone-wrap{max-width:520px;margin:0 auto;background:var(--surface);border-radius:16px;padding:1.25rem}
+    .demo-phone-header{font-size:0.75rem;font-weight:700;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;text-align:center;margin-bottom:1rem}
+    .demo-sms-list{display:flex;flex-direction:column;gap:10px}
+    .demo-sms{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem}
+    .green-sms{border-color:var(--green-border);background:var(--green-pale)}
+    .amber-sms{border-color:#fde68a;background:#fffbeb}
+    .demo-sms-from{font-size:0.72rem;font-weight:700;color:var(--green);margin-bottom:6px;letter-spacing:0.3px;display:flex;justify-content:space-between}
+    .demo-sms-time{color:var(--muted2);font-weight:400}
+    .demo-sms-body{font-size:0.86rem;color:var(--text2);line-height:1.7}
+    .demo-sms-body strong{font-weight:600;color:var(--text)}
+
+    /* ── CTA ── */
+    .cta-section{background:var(--dark);padding:7rem 2rem;text-align:center;position:relative;overflow:hidden}
+    .cta-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(5,150,105,0.12) 0%,transparent 70%);pointer-events:none}
+    .cta-inner{position:relative;z-index:2;max-width:580px;margin:0 auto}
+    .cta-eyebrow{font-size:0.8rem;font-weight:600;color:#34d399;letter-spacing:0.5px;margin-bottom:1.25rem}
+    .cta-section h2{font-family:'Manrope',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:0.75rem;letter-spacing:-1px}
+    .cta-section h2 span{color:#34d399}
+    .cta-plain{font-size:1.05rem;color:rgba(255,255,255,0.65);font-weight:500;margin-bottom:0.75rem}
+    .cta-section p{font-size:0.95rem;color:rgba(255,255,255,0.4);max-width:460px;margin:0 auto 2rem;line-height:1.8}
+    .cta-btn{display:inline-block;background:var(--green);color:#fff;border:none;font-size:1rem;font-weight:600;padding:1rem 2.25rem;cursor:pointer;transition:all 0.2s;border-radius:12px;margin-bottom:1rem;font-family:'Inter',sans-serif;box-shadow:0 4px 20px rgba(5,150,105,0.4)}
+    .cta-btn:hover{background:var(--green-hover);transform:translateY(-1px);box-shadow:0 8px 28px rgba(5,150,105,0.5)}
+    .cta-fine{font-size:0.78rem;color:rgba(255,255,255,0.25);margin-bottom:2.5rem}
+    .trust-row{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+    .trust-item{font-size:0.82rem;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:0.45rem}
+    .trust-item::before{content:'';width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0}
+
+    /* ── FOOTER ── */
+    footer{background:#fff;border-top:1px solid var(--border);padding:2.5rem;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem}
+    .footer-logo{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;color:var(--text);letter-spacing:-0.3px;margin-bottom:0.3rem}
+    .footer-logo span{color:var(--green)}
+    .footer-copy{font-size:0.78rem;color:var(--muted)}
+    .footer-nav{display:flex;flex-wrap:wrap;gap:1.5rem}
+    .footer-nav a{color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.18s}
+    .footer-nav a:hover{color:var(--text)}
+    .footer-disc{font-size:0.72rem;color:var(--muted2);max-width:360px;line-height:1.6}
+
+    @media(max-width:900px){
+      nav{padding:0.85rem 1.25rem}.nav-links{display:none}
+      section{padding:4rem 1.25rem}
+      .hero-inner{grid-template-columns:1fr}.perf-card{display:none}
+      .proof-grid{grid-template-columns:1fr 1fr}
+      .who-grid,.testi-grid{grid-template-columns:1fr}
+      .how-grid{grid-template-columns:1fr}
+      .glossary-grid{grid-template-columns:1fr}
+      .upsell-strip{flex-direction:column}.upsell-price{text-align:left}
+      footer{flex-direction:column;padding:1.5rem}
+      .mode-bar{flex-direction:column;align-items:flex-start;gap:0.4rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- MODE BAR -->
+<div class="mode-bar">
+  <div class="mode-msg">New here? <strong>Turn on Simple Mode</strong> — we explain everything in plain everyday language.</div>
+  <div class="mode-toggle-wrap">
+    <span class="mode-lbl on" id="lbl-std">Standard</span>
+    <label class="tgl" aria-label="Simple Mode toggle">
+      <input type="checkbox" id="tgl-input"/>
+      <span class="tgl-track"></span>
+    </label>
+    <span class="mode-lbl" id="lbl-smp">Simple Mode</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Green<span>SniperX</span></div>
+  <div class="nav-links">
+    <a href="#who">Who It's For</a>
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#results">Results</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-login" href="#">Log in</a>
+    <button class="btn btn-sm btn-primary">Start Free Trial</button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="tick up">SPY +1.4%</span><span class="tick up">NVDA +3.2%</span><span class="tick dn">GOLD −0.4%</span><span class="tick up">QQQ +1.8%</span><span class="tick up">TSLA +2.6%</span><span class="tick dn">OIL −1.1%</span><span class="tick up">AAPL +0.9%</span><span class="tick up">ETH +3.0%</span><span class="tick dn">EUR −0.2%</span><span class="tick up">BTC +4.5%</span>
+    <span class="tick up">SPY +1.4%</span><span class="tick up">NVDA +3.2%</span><span class="tick dn">GOLD −0.4%</span><span class="tick up">QQQ +1.8%</span><span class="tick up">TSLA +2.6%</span><span class="tick dn">OIL −1.1%</span><span class="tick up">AAPL +0.9%</span><span class="tick up">ETH +3.0%</span><span class="tick dn">EUR −0.2%</span><span class="tick up">BTC +4.5%</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Precision Trading · Built for Everyday People</div>
+
+      <h1 class="std">Think of It as a<br>Savings Account.<br><span class="g">One That Actually Grows.</span></h1>
+      <h1 class="smp">What If Your Money<br>Grew Like It Should<br><span class="g">Have All Along?</span></h1>
+
+      <p class="hero-sub std">The average savings account pays less than 0.5% a year. GreenSniperX runs precision trading strategies in your account — automatically, every session — building real returns while you live your life.</p>
+      <p class="hero-sub smp">A regular savings account barely grows your money at all. GreenSniperX is like a savings account that actually works — putting your money to work every single day, automatically, while you do everything else.</p>
+
+      <p class="hero-desc std">No charts. No decisions. No experience needed. Just your money working harder than it ever has sitting in a bank account — compounding session after session, on autopilot.</p>
+      <p class="hero-desc smp">You set it up once and our system handles everything. It makes trades for you, locks in your profits, and grows your account automatically. You just check in when you feel like it — like checking a savings balance, except it actually moves.</p>
+
+      <p class="hero-autopilot std">Fully automated. You never place a trade, read a chart, or make a financial decision. While your savings account sat earning $46 on $10,000 this year — GreenSniperX was in the market every session.</p>
+      <p class="hero-autopilot smp">Your bank pays you almost nothing to keep your money there. GreenSniperX puts that same money to work in the markets — automatically, every day — and you never have to do a single thing after setup.</p>
+
+      <div class="hero-cta">
+        <button class="btn btn-lg btn-primary">Start Free — 7 Days on Us</button>
+        <button class="btn btn-lg btn-outline">See How It Works</button>
+      </div>
+      <div class="hero-trust">
+        <span>No experience needed</span>
+        <span class="td"></span>
+        <span>Cancel anytime</span>
+        <span class="td"></span>
+        <span>Your money stays in your account</span>
+      </div>
+    </div>
+    <div>
+      <div class="perf-card">
+        <div class="perf-live-badge">Live performance</div>
+        <div class="perf-big">+$2,847</div>
+        <p class="perf-note std">Average member return · last active period · all strategies combined</p>
+        <p class="perf-note smp">Average amount our members made recently — automatically, without doing a thing</p>
+        <div class="bar-row"><div class="bar-name">Momentum</div><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div><div class="bar-val">88%</div></div>
+        <div class="bar-row"><div class="bar-name">Velocity</div><div class="bar-bg"><div class="bar-fill" style="width:94%"></div></div><div class="bar-val">94%</div></div>
+        <div class="bar-row"><div class="bar-name">Tidal</div><div class="bar-bg"><div class="bar-fill" style="width:76%"></div></div><div class="bar-val">76%</div></div>
+        <div class="bar-row"><div class="bar-name">Catalyst</div><div class="bar-bg"><div class="bar-fill gold" style="width:91%"></div></div><div class="bar-val gold">91%</div></div>
+        <div class="bar-row"><div class="bar-name">Leverage</div><div class="bar-bg"><div class="bar-fill gold" style="width:97%"></div></div><div class="bar-val gold">97%</div></div>
+        <p class="perf-disc std">Results vary by member. Past performance does not guarantee future returns.</p>
+        <p class="perf-disc smp">Real results from real members. Outcomes differ — this shows what is possible, not a guarantee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-grid">
+    <div class="pstat"><div class="num">$2.4M+</div><div class="lbl">Member Returns</div><div class="slbl">Total earned by our members</div></div>
+    <div class="pstat"><div class="num">3,800+</div><div class="lbl">Active Members</div><div class="slbl">People using GreenSniperX right now</div></div>
+    <div class="pstat"><div class="num">0.46%</div><div class="lbl">Avg. Bank Savings APY</div><div class="slbl">What your bank pays you per year — we do better</div></div>
+    <div class="pstat"><div class="num">5</div><div class="lbl">Live Strategies</div><div class="slbl">Five ways we grow your money</div></div>
+  </div>
+</div>
+
+<!-- GLOSSARY -->
+<div class="glossary">
+  <div class="wrap">
+    <h3>Words You Might See — In Plain English</h3>
+    <p class="gsub">No finance degree needed. Here's what things actually mean.</p>
+    <div class="glossary-grid">
+      <div class="gitem"><h4>Trading strategy</h4><p>A set of rules our system follows to buy or sell. Like a recipe — same steps every time, trying to make a profit. You never need to understand the recipe. You just get the results.</p></div>
+      <div class="gitem"><h4>Automated execution</h4><p>The system trades on your behalf automatically — without you doing anything. It runs 24/7, even while you sleep, eat, or spend time with family.</p></div>
+      <div class="gitem"><h4>Trailing floor</h4><p>A rising safety net. If your trade goes up 10%, that 10% is locked in — even if the market drops back down, you keep what you already made.</p></div>
+      <div class="gitem"><h4>Simulation period</h4><p>Your free 7-day trial runs everything in a practice environment using real market prices. You see exactly what would happen — with zero real money at risk.</p></div>
+      <div class="gitem"><h4>Win rate</h4><p>Out of every 100 trades, 94 make money. No system wins every time — but 94 out of 100 is an exceptional record.</p></div>
+      <div class="gitem"><h4>Compounding returns</h4><p>Your money earns money — and then that money earns more. Like a snowball rolling downhill, getting bigger the longer it rolls.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO IS THIS FOR -->
+<section class="who-section" id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Built for you</div>
+      <h2 class="sec-title std">Your savings account isn't growing.<br><span style="color:var(--green)">GreenSniperX is.</span></h2>
+      <h2 class="sec-title smp">Your bank is not working hard enough for you.<br><span style="color:var(--green)">We are.</span></h2>
+      <p class="sec-plain">For people who want their money doing more than sitting in an account earning almost nothing.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon"><i class="ti ti-briefcase" aria-hidden="true"></i></div>
+        <div class="who-role">The 9-to-5 professional</div>
+        <div class="who-plain">Your job pays the bills. GreenSniperX builds the future.</div>
+        <p class="who-body">A second income stream that runs completely on its own — no extra time, no screen watching required.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><i class="ti ti-rocket" aria-hidden="true"></i></div>
+        <div class="who-role">The Entrepreneur</div>
+        <div class="who-plain">You already know leverage. This is your next one.</div>
+        <p class="who-body">Your business needs your focus. GreenSniperX runs a fully automated income stream alongside it — no input required.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="5" r="2"/>
+            <circle cx="17" cy="5" r="2"/>
+            <path d="M5 20v-5a4 4 0 0 1 4-4h1"/>
+            <path d="M13 20v-5a4 4 0 0 1 4-4h1"/>
+            <circle cx="7" cy="5" r="0" fill="#059669"/>
+          </svg>
+        </div>
+        <div class="who-role">The Parent</div>
+        <div class="who-plain">Build wealth your family will feel for generations.</div>
+        <p class="who-body">Consistent gains compounding quietly in the background — turning today's effort into something that lasts.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
+        <div class="who-role">The Student or young professional</div>
+        <div class="who-plain">Time is your biggest asset. Use it.</div>
+        <p class="who-body">The earlier you start, the harder compounding works in your favor. You don't need a lot — you just need to begin.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><i class="ti ti-building-estate" aria-hidden="true"></i></div>
+        <div class="who-role">The Real estate investor</div>
+        <div class="who-plain">Your portfolio should not stop at property.</div>
+        <p class="who-body">Daily returns that don't depend on tenants, listings, or renovation timelines. Markets move every day.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><i class="ti ti-arrows-exchange" aria-hidden="true"></i></div>
+        <div class="who-role">The Side hustler</div>
+        <div class="who-plain">One more stream — and this one runs itself.</div>
+        <p class="who-body">No clients. No deliverables. No schedule. Consistent returns running in the background while you handle everything else.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">How it works</div>
+      <h2 class="sec-title std">Simple setup.<br>Then GreenSniperX takes over.</h2>
+      <h2 class="sec-title smp">Four steps.<br>Then we handle everything.</h2>
+      <p class="sec-sub std">No financial background required. No ongoing decisions. We built this for people who want results — not homework.</p>
+      <p class="sec-sub smp">Getting started is easier than setting up a new phone. Four steps and the system does all the work from that point on.</p>
+    </div>
+    <div class="how-grid">
+      <div>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h4>Sign up and start your free trial</h4>
+              <p class="std">Choose your membership and get instant access. 7 days completely free — full experience from Day 1.</p>
+              <p class="smp">Enter your details and you're in. Nothing is charged for a full week. You're not committing to anything yet.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h4>We walk you through the setup</h4>
+              <p class="std">Once inside, we guide you through connecting your personal account. Full step-by-step instructions provided after joining.</p>
+              <p class="smp">After you join, we send everything you need. We walk you through every single click — you figure out nothing on your own.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h4>Watch the strategies run — risk free</h4>
+              <p class="std">For 7 days your strategies run in simulation using live market data. See exactly how your account performs before any real money moves.</p>
+              <p class="smp">For your first 7 days, we run a practice version using real market prices. You watch — zero real money involved.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h4>Go live — your money starts working</h4>
+              <p class="std">Subscribe on Day 8 and strategies shift to live execution. From that point GreenSniperX runs around the clock in your account.</p>
+              <p class="smp">If you love what you see, stay in. Real trades. Real results. Into your own account. We handle everything.</p>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-lg btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem">Start Free — 7 Days on Us</button>
+        <p style="font-size:0.8rem;color:var(--muted2);text-align:center;margin-top:0.6rem">Cancel before Day 7 and you owe nothing.</p>
+      </div>
+      <div>
+        <div class="feat-card">
+          <div class="feat-card-label">Everything included at $199/mo</div>
+          <ul class="feat-list">
+            <li><div class="feat-check">✓</div><div class="feat-body"><div class="fl">Five precision trading strategies</div><p class="fd std">Momentum, Velocity, Tidal, Catalyst, and Leverage — all running automatically.</p><p class="fd smp">Five different ways our system grows your money, all automatic.</p></div></li>
+            <li><div class="feat-check">✓</div><div class="feat-body"><div class="fl">Trailing floor protection on every trade</div><p class="fd std">Gains lock in as they grow. You never give back what you've already made.</p><p class="fd smp">A safety net that rises with your profits. You always keep what you've earned.</p></div></li>
+            <li><div class="feat-check">✓</div><div class="feat-body"><div class="fl">Plain English alerts to your phone</div><p class="fd">Every trade and floor update sent as a simple text — no jargon, just results.</p></div></li>
+            <li><div class="feat-check">✓</div><div class="feat-body"><div class="fl">Live dashboard with real-time performance</div><p class="fd std">Current positions, P&amp;L, floor status, and full trade history — always live.</p><p class="fd smp">See exactly how your account is doing anytime — simple as checking a bank balance.</p></div></li>
+            <li><div class="feat-check">✓</div><div class="feat-body"><div class="fl">VIX filter — trades only in safe conditions</div><p class="fd std">When volatility is too high, the system pauses automatically and waits.</p><p class="fd smp">When markets are stormy, we wait. When conditions are clear, we trade. Always protected first.</p></div></li>
+            <li><div class="feat-check">✓</div><div class="feat-body"><div class="fl">Full financial education library</div><p class="fd">Learn at your own pace — built for complete beginners through to advanced members.</p></div></li>
+            <li><div class="feat-check gold">✓</div><div class="feat-body"><div class="fl">Affiliate program — earn from referrals</div><p class="fd">Share your link and earn a monthly commission for every member you bring in.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Pricing</div>
+      <h2 class="sec-title">One plan. Everything included.</h2>
+      <p class="sec-plain">No tiers. No upgrades. No confusion.</p>
+      <p class="sec-sub">Every strategy, every feature, every tool. All in — from Day 1.</p>
+    </div>
+    <div class="price-wrap">
+      <div class="price-card">
+        <div class="price-pop">GreenSniperX — Full Access</div>
+        <div class="price-name">Membership</div>
+        <div class="price-amount">$199<sub>/mo</sub></div>
+        <div class="price-cancel">Cancel anytime · No contracts · No lock-in</div>
+        <hr class="price-divider"/>
+        <ul class="price-feats">
+          <li><span class="pf-icon g">✦</span><span>7 days completely free — no charge until Day 8</span></li>
+          <li><span class="pf-icon g">✦</span><span>All five trading strategies running simultaneously</span></li>
+          <li><span class="pf-icon g">✦</span><span>Trades execute automatically — you do nothing</span></li>
+          <li><span class="pf-icon g">✦</span><span>Choose your position size before every trade</span></li>
+          <li><span class="pf-icon g">✦</span><span>Trailing floor — locks in gains, all the way up</span></li>
+          <li><span class="pf-icon g">✦</span><span>You never give back what you've already made</span></li>
+          <li><span class="pf-icon g">✦</span><span>Plain English SMS alerts every time something moves</span></li>
+          <li><span class="pf-icon g">✦</span><span>Live dashboard with real-time P&amp;L tracker</span></li>
+          <li><span class="pf-icon g">✦</span><span>VIX filter — only trades in safe market conditions</span></li>
+          <li><span class="pf-icon g">✦</span><span>Full education library — beginner to advanced</span></li>
+          <li><span class="pf-icon gd">✦</span><span>Affiliate program — earn monthly from referrals</span></li>
+        </ul>
+        <button class="price-btn">Start My Free 7-Day Trial</button>
+        <p class="price-note">7 days free · $199/mo after · Cancel before Day 7 and pay nothing</p>
+        <div style="margin-top:1.25rem;padding:1rem;background:var(--surface);border-radius:10px;border:1px solid var(--border)">
+          <p class="std" style="font-size:0.82rem;color:var(--muted);line-height:1.7">The average American earns <strong style="color:var(--text)">$46 a year</strong> on a $10,000 savings account. GreenSniperX members put that same $10,000 to work in the market every single trading session — automatically, on their behalf.</p>
+          <p class="smp" style="font-size:0.82rem;color:var(--muted);line-height:1.7">If you put $10,000 in a regular savings account, the bank pays you about <strong style="color:var(--text)">$46 for the whole year.</strong> GreenSniperX puts that same money to work in the market every day — not once a year. That is the difference.</p>
+        </div>
+      </div>
+
+      <!-- UPSELL: CUSTOM STRATEGY -->
+      <div class="upsell-strip">
+        <div class="upsell-left">
+          <div class="upsell-tag">Add-on · One-time purchase</div>
+          <div class="upsell-title">Custom Strategy — Built for Your Account</div>
+          <p class="upsell-desc std">Tell us exactly what you want. Our team designs and builds a unique trading strategy for your profile — live in your account within 5 business days.</p>
+          <p class="upsell-desc smp">Want something built just for you? Describe what you're looking for and our team builds a custom strategy for your account. Ready in 5 days.</p>
+        </div>
+        <div class="upsell-price">
+          <div class="upsell-amount">$249</div>
+          <div class="upsell-once">one-time · members only</div>
+          <button class="upsell-btn">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section" id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">See it in action</div>
+      <h2 class="sec-title std">Your command center.<br><span style="color:var(--green)">Always watching.</span></h2>
+      <h2 class="sec-title smp">Here's what it looks like<br><span style="color:var(--green)">inside your account.</span></h2>
+      <p class="sec-sub std">Everything runs automatically. This is what your member dashboard looks like — live strategies, trailing floor protection, and plain English alerts sent straight to your phone.</p>
+      <p class="sec-sub smp">This is what you see when you log in. Think of it like a scoreboard that updates itself — you never have to touch anything. The system does all the work and tells you what happened in plain simple language.</p>
+    </div>
+
+    <div class="demo-tabs">
+      <button class="demo-tab active" onclick="switchTab('dashboard',this)">Live dashboard</button>
+      <button class="demo-tab" onclick="switchTab('signal',this)">Active signal</button>
+      <button class="demo-tab" onclick="switchTab('sms',this)">SMS alerts</button>
+    </div>
+
+    <!-- SIMPLE MODE EXPLAINER BAR -->
+    <div class="demo-simple-bar smp">
+      <div class="dsb-icon">💡</div>
+      <div id="demo-simple-text">Select a tab above to see a plain English explanation of what you are looking at.</div>
+    </div>
+
+    <div class="demo-panels">
+
+      <!-- DASHBOARD -->
+      <div class="demo-panel show" id="dp-dashboard">
+        <div class="demo-shell">
+          <div class="demo-topbar">
+            <div class="demo-logo">Green<span>SniperX</span></div>
+            <div class="demo-live-pill"><span class="demo-dot"></span>Session active · 9:30–11:00 AM ET</div>
+            <div class="demo-date">May 18, 2026</div>
+          </div>
+          <div class="demo-stats">
+            <div class="demo-stat"><div class="ds-label std">Portfolio value</div><div class="ds-label smp">Total in your account</div><div class="ds-val">$12,480</div></div>
+            <div class="demo-stat"><div class="ds-label std">Today's return</div><div class="ds-label smp">Made today so far</div><div class="ds-val" style="color:var(--green)">+$342</div></div>
+            <div class="demo-stat"><div class="ds-label std">Floor saves</div><div class="ds-label smp">Times the safety net protected you</div><div class="ds-val" style="color:#b45309">3</div></div>
+            <div class="demo-stat"><div class="ds-label std">Strategies active</div><div class="ds-label smp">Plans working for you right now</div><div class="ds-val" style="color:var(--green)">5 / 5</div></div>
+          </div>
+          <div class="demo-body">
+            <div class="demo-col">
+              <div class="demo-col-label">Performance — last 14 days</div>
+              <div class="demo-chart">
+                <svg viewBox="0 0 300 65" preserveAspectRatio="none" style="width:100%;height:100%">
+                  <polyline points="0,55 20,48 40,52 60,38 80,42 100,30 120,34 140,22 160,28 180,18 200,24 220,14 240,10 260,16 280,8 300,4" fill="none" stroke="var(--green)" stroke-width="2" stroke-linejoin="round"/>
+                  <polyline points="0,55 20,48 40,52 60,38 80,42 100,30 120,34 140,22 160,28 180,18 200,24 220,14 240,10 260,16 280,8 300,4 300,65 0,65" fill="var(--green-pale)" stroke="none"/>
+                </svg>
+              </div>
+              <div class="demo-floor-wrap">
+                <div class="demo-floor-header">
+                  <span class="std">Trailing floor — Momentum strategy</span>
+                  <span class="smp">Your safety net — Momentum</span>
+                  <span class="demo-locked-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>+15% locked</span>
+                </div>
+                <div class="demo-floor-bg">
+                  <div class="demo-floor-fill" style="width:72%"></div>
+                  <div class="demo-floor-marker" style="left:55%"></div>
+                </div>
+                <div class="demo-floor-steps">
+                  <span>Entry</span><span class="fls-on">+5%</span><span class="fls-on">+10%</span><span class="fls-on">+15%</span><span>+20%</span><span>+25%</span>
+                </div>
+              </div>
+              <div class="demo-col-label" style="margin-top:1rem">Today's trades</div>
+              <div class="demo-trades">
+                <div class="demo-trade">
+                  <span class="dt-side buy">BUY</span>
+                  <span class="dt-sym">SPY 572C</span>
+                  <span class="dt-info std">Momentum · 9:47 AM · 3 contracts</span>
+                  <span class="dt-info smp">Our system bought in · 9:47 AM</span>
+                  <span class="dt-floor">Floor +15%</span>
+                  <span class="dt-pnl up">+$214</span>
+                </div>
+                <div class="demo-trade">
+                  <span class="dt-side sell">SELL</span>
+                  <span class="dt-sym">SPY 570P</span>
+                  <span class="dt-info std">Velocity · 10:12 AM · closed</span>
+                  <span class="dt-info smp">System sold · floor saved profits</span>
+                  <span class="dt-floor">Floor saved</span>
+                  <span class="dt-pnl up">+$88</span>
+                </div>
+                <div class="demo-trade">
+                  <span class="dt-side buy">BUY</span>
+                  <span class="dt-sym">QQQ 488C</span>
+                  <span class="dt-info std">Tidal · 10:31 AM · holding</span>
+                  <span class="dt-info smp">System bought · still holding</span>
+                  <span class="dt-floor">Floor +5%</span>
+                  <span class="dt-pnl up">+$40</span>
+                </div>
+              </div>
+            </div>
+            <div class="demo-col">
+              <div class="demo-col-label std">Strategy status</div>
+              <div class="demo-col-label smp">What each plan is doing right now</div>
+              <div class="demo-strategies">
+                <div class="demo-strat active-s">
+                  <span class="demo-active-dot"></span>
+                  <span class="demo-strat-name">Momentum</span>
+                  <span class="demo-strat-info std">Active · 3 trades today</span>
+                  <span class="demo-strat-info smp">Working · made 3 moves today</span>
+                  <span class="demo-strat-pnl up">+$214</span>
+                </div>
+                <div class="demo-strat active-s">
+                  <span class="demo-active-dot"></span>
+                  <span class="demo-strat-name">Velocity</span>
+                  <span class="demo-strat-info std">Active · 5 trades today</span>
+                  <span class="demo-strat-info smp">Working · made 5 quick moves</span>
+                  <span class="demo-strat-pnl up">+$88</span>
+                </div>
+                <div class="demo-strat active-s">
+                  <span class="demo-active-dot"></span>
+                  <span class="demo-strat-name">Tidal</span>
+                  <span class="demo-strat-info std">Holding · entered 10:31 AM</span>
+                  <span class="demo-strat-info smp">Holding a position · watching it</span>
+                  <span class="demo-strat-pnl up">+$40</span>
+                </div>
+                <div class="demo-strat paused-s">
+                  <span class="demo-pause-dot"></span>
+                  <span class="demo-strat-name">Catalyst</span>
+                  <span class="demo-strat-info std">Waiting · VIX elevated</span>
+                  <span class="demo-strat-info smp">Sitting out · market too choppy</span>
+                  <span class="demo-strat-pause">Paused</span>
+                </div>
+                <div class="demo-strat active-s">
+                  <span class="demo-active-dot"></span>
+                  <span class="demo-strat-name">Leverage</span>
+                  <span class="demo-strat-info std">Active · 1 position open</span>
+                  <span class="demo-strat-info smp">Working · one trade open</span>
+                  <span class="demo-strat-pnl up">Running</span>
+                </div>
+              </div>
+              <div class="demo-shield-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span class="std">Trailing floor active on all open positions. You never give back what you have already made.</span>
+                <span class="smp">Your safety net is on for every trade. If the market drops, your locked-in profits stay safe.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIGNAL -->
+      <div class="demo-panel" id="dp-signal">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;max-width:900px;margin:0 auto">
+          <div>
+            <div class="demo-shell" style="padding:1.25rem">
+              <div class="demo-sig-header">
+                <div>
+                  <div class="demo-sig-badge">Signal fired · 10:31 AM</div>
+                  <div class="demo-sig-strat std">Momentum strategy</div>
+                  <div class="demo-sig-strat smp">Our system spotted an opportunity</div>
+                </div>
+                <div style="text-align:right">
+                  <div class="demo-sig-sym">SPY 572C</div>
+                  <div class="demo-sig-price">$1.78</div>
+                  <div class="demo-sig-chg">+14.8% from entry</div>
+                </div>
+              </div>
+              <div class="demo-sig-meta">
+                <div class="demo-sig-cell"><div class="ds-label std">Entry price</div><div class="ds-label smp">Bought at</div><div class="demo-sig-val">$1.55</div></div>
+                <div class="demo-sig-cell"><div class="ds-label std">Current</div><div class="ds-label smp">Worth now</div><div class="demo-sig-val" style="color:var(--green)">$1.78</div></div>
+                <div class="demo-sig-cell"><div class="ds-label std">Floor locked</div><div class="ds-label smp">Minimum you keep</div><div class="demo-sig-val" style="color:#b45309">+10%</div></div>
+                <div class="demo-sig-cell"><div class="ds-label std">Min. keep</div><div class="ds-label smp">Guaranteed per contract</div><div class="demo-sig-val" style="color:var(--green)">$16/contract</div></div>
+              </div>
+              <div class="demo-contracts-row">
+                <span class="std">Contracts</span>
+                <span class="smp">How many to buy</span>
+                <div class="demo-ctrl">
+                  <button class="demo-c-btn" onclick="dAdj(-1)">−</button>
+                  <span id="d-cnum">3</span>
+                  <button class="demo-c-btn" onclick="dAdj(1)">+</button>
+                </div>
+              </div>
+              <div class="demo-cost-row">
+                <span>Total cost: <strong id="d-cost">$465</strong></span>
+                <span>Floor guarantee: <strong id="d-flr" style="color:var(--green)">min +$47</strong></span>
+              </div>
+              <button class="demo-exec-btn">Execute trade — <span id="d-exec">3 contracts</span></button>
+              <button class="demo-skip-btn">Skip this signal</button>
+            </div>
+          </div>
+          <div>
+            <div class="demo-col-label std">Floor progression</div>
+            <div class="demo-col-label smp">How your safety net moves up</div>
+            <div class="demo-floor-steps-list">
+              <div class="dfs-row locked"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span class="std">Hit +5% — floor moved to entry · locked</span><span class="smp">Up 5% — you can't lose money now</span></div>
+              <div class="dfs-row locked"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span class="std">Hit +10% — floor moved to +5% · locked</span><span class="smp">Up 10% — you're guaranteed to keep at least 5%</span></div>
+              <div class="dfs-row next"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="std">Hit +15% — floor moves to +10% · next</span><span class="smp">Next milestone — floor will rise again when it hits</span></div>
+              <div class="dfs-row"><div class="dfs-empty-dot"></div><span class="std">Hit +20% — floor moves to +15%</span><span class="smp">Keeps climbing — floor keeps rising with it</span></div>
+              <div class="dfs-row"><div class="dfs-empty-dot"></div><span class="std">Hit +25% — floor moves to +20%</span><span class="smp">All the way up — your profits stay locked the whole time</span></div>
+            </div>
+            <div class="demo-shield-note" style="margin-top:1rem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span class="std">No matter what happens, you are locked in to keep at least +10% on this trade.</span>
+              <span class="smp">Even if the market drops right now, you already locked in 10%. That money is yours no matter what.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMS -->
+      <div class="demo-panel" id="dp-sms">
+        <div class="demo-phone-wrap">
+          <div class="demo-phone-header std">Plain English alerts — straight to your phone</div>
+          <div class="demo-phone-header smp">The texts you get — written so anyone can understand them</div>
+          <div class="demo-sms-list">
+            <div class="demo-sms">
+              <div class="demo-sms-from">GreenSniperX<span class="demo-sms-time">9:47 AM</span></div>
+              <div class="demo-sms-body std">A trade just fired in your account. You are now in <strong>3 SPY contracts</strong> at <strong>$1.55 each.</strong> Total cost: <strong>$465.</strong> We are watching it. As it moves up, we lock in your gains automatically. Sit tight — we have got it from here.</div>
+              <div class="demo-sms-body smp">A trade just started in your account. Think of it like we placed a bet on your behalf — <strong>$465 total.</strong> We are watching it for you. If it goes up, we lock in your profits automatically. You do not have to do anything.</div>
+            </div>
+            <div class="demo-sms green-sms">
+              <div class="demo-sms-from" style="color:var(--green)">GreenSniperX<span class="demo-sms-time">10:02 AM</span></div>
+              <div class="demo-sms-body std">Good news — your trade is up <strong>15%.</strong> Your safety floor just moved up. No matter what happens from here, <strong>you keep at least 10%.</strong> If it keeps climbing, your floor keeps moving with it.</div>
+              <div class="demo-sms-body smp">Your trade is winning — up <strong>15%!</strong> We just moved your safety net up. Even if the market drops right now, <strong>you are guaranteed to keep at least 10%.</strong> Like locking in your score in a game — it can only go up from here.</div>
+            </div>
+            <div class="demo-sms green-sms">
+              <div class="demo-sms-from" style="color:var(--green)">GreenSniperX<span class="demo-sms-time">10:44 AM</span></div>
+              <div class="demo-sms-body std">Trade closed. <strong>You made $214 today on that position.</strong> Account balance: <strong>$12,480.</strong> Floor protection worked — you kept every dollar of what was locked in.</div>
+              <div class="demo-sms-body smp">Done! <strong>You just made $214.</strong> The trade is finished and the money is in your account. Your total is now <strong>$12,480.</strong> The safety net did its job — you kept everything that was protected.</div>
+            </div>
+            <div class="demo-sms amber-sms">
+              <div class="demo-sms-from" style="color:#b45309">GreenSniperX<span class="demo-sms-time">11:15 AM</span></div>
+              <div class="demo-sms-body std">Market conditions flagged — we are sitting this one out. The VIX is elevated, which means volatility is higher than our safety threshold. We will be back when things settle. Your account is protected.</div>
+              <div class="demo-sms-body smp">We are taking a break from trading right now. The market is acting too unpredictable — like weather that is too stormy to drive in. We will wait until it calms down. <strong>Your money is safe.</strong> We will text you when we are back.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section" id="results">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Member stories</div>
+      <h2 class="sec-title">Real people. Real results.</h2>
+      <p class="sec-sub">From truck drivers to physicians — people from every walk of life are building consistent returns through GreenSniperX.</p>
+    </div>
+
+    <!-- ROW 1 — always visible -->
+    <div class="testi-grid" id="testi-row-1">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I drive long haul — I am gone for days at a time. My dispatcher told me about GreenSniperX. I set it up on a Sunday before a run and by the time I got back three days later, my account had already moved. I have not changed a single setting since."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Darnell B.</div>
+        <div class="testi-role">Long-Haul Truck Driver · Memphis, TN · Member since Nov 2025</div>
+        <div class="testi-win">Running on its own — checked in on the road</div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I got laid off in March — fourteen years at the same company, gone in one meeting. A friend sent me the link that same week. Three months later I am employed again and I kept the membership. It is part of my income now — not a replacement, an addition."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Kevin L.</div>
+        <div class="testi-role">Operations Lead · Detroit, MI · Member since Mar 2026</div>
+        <div class="testi-win">Started during a hard period — still running strong</div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I did not know what a stock was when I signed up. I thought investing was for people with degrees or money to lose. The education inside changed that completely. I understand what is happening in my account now — I am not just watching numbers move."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Gloria M.</div>
+        <div class="testi-role">Retired Teacher · Birmingham, AL · Member since Dec 2025</div>
+        <div class="testi-win">Started from zero — building confidence and returns</div>
+      </div>
+    </div>
+
+    <!-- ROW 2 — hidden until See More -->
+    <div class="testi-grid testi-hidden" id="testi-row-2">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I am in my second year of law school. A classmate mentioned GreenSniperX and I figured the free trial had nothing to lose. I set it up during finals week in about twenty minutes. It has been running quietly in the background ever since. I check it less than I check my email."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Jordan A.</div>
+        <div class="testi-role">2L Law Student · Howard University · Washington, D.C. · Member since Feb 2026</div>
+        <div class="testi-win">Building a financial foundation while in school</div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I own a small cleaning business — eight employees, payroll every two weeks. I needed an income stream that did not need me. GreenSniperX is the only investment I have made where I genuinely do not have to think about it. It runs. I focus on my business. Both are growing."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Tamika R.</div>
+        <div class="testi-role">Owner, Residential Cleaning Co. · Atlanta, GA · Member since Jan 2026</div>
+        <div class="testi-win">Account growing alongside her business — fully automated</div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I am a physician. My schedule does not allow for active investing. What convinced me was the trailing floor and the VIX filter. The system is designed to protect downside, not just chase upside. That kind of risk management is what I look for."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Dr. Simone H.</div>
+        <div class="testi-role">Emergency Medicine Physician · Charlotte, NC · Member since Oct 2025</div>
+        <div class="testi-win">Consistent performance — zero active management</div>
+      </div>
+    </div>
+
+    <!-- ROW 3 — hidden until See More -->
+    <div class="testi-grid testi-hidden" id="testi-row-3">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I spent fifteen years in corporate finance. I know how to read a balance sheet and I know when something is structured well. GreenSniperX is structured well. The automation is clean, the reporting is clear, and the strategy logic makes sense. It earns its place every month."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Andre S.</div>
+        <div class="testi-role">Former VP of Finance, Independent Investor · Miami, FL · Member since Sep 2025</div>
+        <div class="testi-win">Running as a secondary layer alongside existing investments</div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"As a software engineer I looked under the hood before I trusted it. The automation logic, the floor protection, the VIX filtering — it is genuinely well thought out. Most platforms in this space are smoke and mirrors. This one is not."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Marcus J.</div>
+        <div class="testi-role">Senior Software Engineer · Austin, TX · Member since Nov 2025</div>
+        <div class="testi-win">Three active referrals from his own team</div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I needed an income stream I could trust while I focused on finishing my degree. The trial showed me real numbers in real conditions. I subscribed before the week was even up. It runs quietly and I graduate in May knowing my money did not sit still while I studied."</blockquote>
+        <hr class="testi-divider"/>
+        <div class="testi-name">Destiny K.</div>
+        <div class="testi-role">Senior, Finance Major · Houston, TX · Member since Dec 2025</div>
+        <div class="testi-win">Referral commissions now covering membership cost</div>
+      </div>
+    </div>
+
+    <!-- SEE MORE -->
+    <div class="testi-more-wrap" id="see-more-wrap">
+      <button class="testi-more-btn" onclick="showMoreTestis()" id="see-more-btn">
+        Read more stories
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <p class="testi-count" id="testi-count">Showing 3 of 9 members</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Your next move</div>
+    <h2 class="std">Your Savings Account<br><span>Isn't Doing This.</span></h2>
+    <h2 class="smp">Your Money Deserves<br><span>Better Than 0.46%.</span></h2>
+    <p class="cta-plain std">GreenSniperX works every session. Your savings account works once a year.</p>
+    <p class="cta-plain smp">A regular savings account barely moves. GreenSniperX puts your money to work every single day — automatically, on your behalf.</p>
+    <p class="std">Thousands of everyday people — professionals, parents, entrepreneurs, complete beginners — are already building wealth through GreenSniperX. Your 7-day trial is free. Everything unlocks the moment you sign up.</p>
+    <p class="smp">You don't need to know anything about trading to start. We guide you through every step. Thousands of regular people are already doing this. Your trial is free and starts the moment you click.</p>
+    <button class="cta-btn">Claim My Free 7-Day Trial</button>
+    <div class="cta-fine">7 days free · $199/mo after · cancel before Day 7 and owe nothing</div>
+    <div class="trust-row">
+      <div class="trust-item">No experience needed</div>
+      <div class="trust-item">Your money stays in your account</div>
+      <div class="trust-item">Cancel anytime</div>
+      <div class="trust-item">Full support after you join</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Green<span>SniperX</span></div>
+    <div class="footer-copy">© 2026 GreenSniperX · greensniperx.com<br>Your money. Working harder.</div>
+  </div>
+  <nav class="footer-nav" aria-label="Footer">
+    <a href="#">Home</a>
+    <a href="#who">Who It's For</a>
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#results">Results</a>
+    <a href="#">Log in</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </nav>
+  <div class="footer-disc">Trading involves substantial risk of loss. Past performance does not guarantee future results. GreenSniperX is not a registered investment advisor. Always invest responsibly.</div>
+</footer>
+
+<script>
+  const inp = document.getElementById('tgl-input');
+  const ls = document.getElementById('lbl-std');
+  const lp = document.getElementById('lbl-smp');
+  function applyMode(s){
+    document.body.classList.toggle('simple',s);
+    ls.classList.toggle('on',!s);
+    lp.classList.toggle('on',s);
+  }
+  inp.addEventListener('change',function(){applyMode(this.checked);localStorage.setItem('gsx-mode',this.checked?'1':'0')});
+  const saved=localStorage.getItem('gsx-mode');
+  if(saved==='1'){inp.checked=true;applyMode(true)}else{applyMode(false)}
+
+  const SIMPLE_TIPS = {
+    dashboard: "This is your homepage inside GreenSniperX. It shows how much money is in your account, how much you made today, how many times the safety net protected you, and what all five strategies are doing right now. You never have to click anything — it updates on its own.",
+    signal: "When our system spots a trade worth taking, this screen pops up. You can see what it bought, what it costs, and exactly how much you are guaranteed to keep no matter what happens. You pick how many contracts you want — or you can skip it entirely. Most members let it run automatically.",
+    sms: "These are the real text messages you get on your phone. Every time a trade happens, your safety floor moves up, or a trade closes with profit, you get a simple text written in everyday language. No confusing finance words. Just clear, honest updates about your money."
+  };
+
+  let currentTab = 'dashboard';
+  function switchTab(id, btn) {
+    document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('show'));
+    document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('dp-'+id).classList.add('show');
+    btn.classList.add('active');
+    currentTab = id;
+    const tip = document.getElementById('demo-simple-text');
+    if(tip) tip.textContent = SIMPLE_TIPS[id];
+  }
+  const initTip = document.getElementById('demo-simple-text');
+  if(initTip) initTip.textContent = SIMPLE_TIPS['dashboard'];
+
+  let dc = 3;
+  function dAdj(n){
+    dc = Math.max(1, Math.min(20, dc+n));
+    document.getElementById('d-cnum').textContent = dc;
+    document.getElementById('d-cost').textContent = '$'+(dc*155).toLocaleString();
+    document.getElementById('d-flr').textContent = 'min +$'+Math.round(dc*155*0.1);
+    document.getElementById('d-exec').textContent = dc+' contract'+(dc>1?'s':'');
+  }
+
+  let testiStep = 0;
+  function showMoreTestis() {
+    testiStep++;
+    const rows = ['testi-row-2','testi-row-3'];
+    const btn = document.getElementById('see-more-btn');
+    const count = document.getElementById('testi-count');
+    if (testiStep === 1) {
+      const row = document.getElementById('testi-row-2');
+      row.classList.remove('testi-hidden');
+      row.classList.add('revealed');
+      count.textContent = 'Showing 6 of 9 members';
+    } else if (testiStep === 2) {
+      const row = document.getElementById('testi-row-3');
+      row.classList.remove('testi-hidden');
+      row.classList.add('revealed');
+      count.textContent = 'Showing all 9 members';
+      btn.classList.add('hidden');
+    }
+  }
+</script>
+</body>
+</html>
