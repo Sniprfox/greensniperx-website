@@ -5,7 +5,6 @@ from fastapi.responses import FileResponse
 from apscheduler.schedulers.background import BackgroundScheduler
 from contextlib import asynccontextmanager
 import os
-
 from config import get_settings
 from routers import auth, stripe_router
 
@@ -20,22 +19,20 @@ def send_trial_reminders():
     from services import sms as sms_svc
 
     try:
-        now    = datetime.now(timezone.utc)
+        now = datetime.now(timezone.utc)
         cutoff = now + timedelta(hours=25)
-
         rows = supabase_admin.table("subscriptions") \
             .select("user_id, trial_end, profiles(full_name, phone)") \
             .eq("status", "trialing") \
             .lte("trial_end", cutoff.isoformat()) \
             .gte("trial_end", now.isoformat()) \
             .execute()
-
         for row in rows.data or []:
-            profile   = (row.get("profiles") or [{}])
-            profile   = profile[0] if isinstance(profile, list) else profile
-            phone     = profile.get("phone")
+            profile = (row.get("profiles") or [{}])
+            profile = profile[0] if isinstance(profile, list) else profile
+            phone = profile.get("phone")
             full_name = profile.get("full_name") or "there"
-            first     = full_name.split()[0]
+            first = full_name.split()[0]
             trial_end = row["trial_end"]
             hours_left = (
                 datetime.fromisoformat(trial_end.replace("Z", "+00:00")) - now
@@ -43,7 +40,6 @@ def send_trial_reminders():
             days_left = 1 if hours_left <= 24 else 2
             if phone:
                 sms_svc.send_trial_ending(phone, first, days_left)
-
         print(f"✅ Trial reminders checked — {len(rows.data or [])} users")
     except Exception as e:
         print(f"❌ Trial reminder error: {e}")
@@ -96,7 +92,11 @@ async def health():
 public = os.path.join(os.path.dirname(__file__), "public")
 if os.path.exists(public):
     app.mount("/assets", StaticFiles(directory=public), name="assets")
+    public_abs = os.path.abspath(public)
 
     @app.get("/{full_path:path}", include_in_schema=False)
     async def serve(full_path: str):
+        requested = os.path.abspath(os.path.join(public, full_path))
+        if full_path and requested.startswith(public_abs + os.sep) and os.path.isfile(requested):
+            return FileResponse(requested)
         return FileResponse(os.path.join(public, "index.html"))
