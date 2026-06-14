@@ -62,32 +62,17 @@
     .hero{padding:6rem 2rem 5rem;background:#fff;position:relative;overflow:hidden}
     .hero-grid-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(5,150,105,0.06) 1px,transparent 1px);background-size:28px 28px;z-index:0}
     .hero-glow{position:absolute;right:-5%;top:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(5,150,105,0.06) 0%,transparent 70%);z-index:0;pointer-events:none}
-    .hero-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:5rem;align-items:center}
+    .hero-inner{position:relative;z-index:2;max-width:720px;margin:0 auto;text-align:center}
     .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:0.82rem;font-weight:600;color:var(--green);background:var(--green-pale);padding:0.3rem 0.85rem;border-radius:20px;border:1px solid var(--green-border);margin-bottom:1.75rem;letter-spacing:0.1px}
     .hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 1.8s infinite}
     @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
     .hero h1{font-family:'Manrope',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.1;color:var(--text);margin-bottom:1.25rem;letter-spacing:-1.5px}
     .hero h1 .g{color:var(--green)}
-    .hero-sub{font-size:1.15rem;color:var(--text2);font-weight:500;margin-bottom:0.75rem;line-height:1.6;max-width:480px}
-    .hero-desc{font-size:1rem;color:var(--muted);line-height:1.8;max-width:470px;margin-bottom:2rem}
-    .hero-cta{display:flex;gap:0.85rem;flex-wrap:wrap;margin-bottom:1.25rem}
-    .hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:0.6rem;font-size:0.82rem;color:var(--muted2)}
+    .hero-sub{font-size:1.15rem;color:var(--text2);font-weight:500;margin:0 auto 0.75rem;line-height:1.6;max-width:520px}
+    .hero-desc{font-size:1rem;color:var(--muted);line-height:1.8;max-width:540px;margin:0 auto 2rem}
+    .hero-cta{display:flex;gap:0.85rem;flex-wrap:wrap;margin-bottom:1.25rem;justify-content:center}
+    .hero-trust{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.6rem;font-size:0.82rem;color:var(--muted2)}
     .td{width:3px;height:3px;border-radius:50%;background:var(--border2);flex-shrink:0}
-
-    /* CALCULATOR CARD */
-    .calc-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.75rem;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
-    .calc-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:600;color:var(--green);background:var(--green-pale);padding:0.2rem 0.65rem;border-radius:20px;margin-bottom:1rem;border:1px solid var(--green-border)}
-    .calc-title{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:0.25rem;letter-spacing:-0.3px}
-    .calc-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem}
-    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
-    .field label{display:block;font-size:0.75rem;font-weight:600;color:var(--text2);margin-bottom:0.3rem}
-    .field input{width:100%;padding:0.55rem 0.7rem;border:1px solid var(--border2);border-radius:8px;font-size:0.88rem;font-family:'Inter',sans-serif;background:#fff;color:var(--text)}
-    .field input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-pale)}
-    .calc-result{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1rem}
-    .calc-row{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--text2);padding:0.25rem 0}
-    .calc-row strong{color:var(--text);font-weight:800;font-family:'Manrope',sans-serif}
-    .calc-row.hl strong{color:var(--green);font-size:1.15rem}
-    .plain-eng{background:var(--gold-pale);border:1px solid var(--gold-border);border-radius:8px;padding:0.7rem 0.85rem;margin-top:0.85rem;font-size:0.82rem;color:#7c2d12;line-height:1.6}
 
     /* SHARED SECTION */
     .sec-eyebrow{display:inline-block;font-size:0.78rem;font-weight:600;color:var(--green);letter-spacing:0.3px;margin-bottom:0.65rem}
@@ -100,6 +85,7 @@
     /* RADAR */
     .radar-section{background:var(--surface)}
     .radar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:1000px;margin:0 auto}
+    .radar-grid-4{grid-template-columns:repeat(2,1fr)}
     .radar-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem}
     .radar-sym{font-family:'Manrope',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:0.5rem}
     .radar-tag{display:inline-block;font-size:0.72rem;font-weight:700;color:var(--green);background:var(--green-pale);border:1px solid var(--green-border);padding:0.2rem 0.65rem;border-radius:20px;margin-bottom:0.75rem}
@@ -108,15 +94,14 @@
     .radar-cta-title{font-family:'Manrope',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:0.35rem;letter-spacing:-0.2px}
     .radar-cta-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;max-width:480px}
 
-    /* TOOLS */
-    .tools-section{background:#fff}
-    .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1000px;margin:0 auto;align-items:start}
-    .tool-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem}
-    .tool-title{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;margin-bottom:0.25rem;letter-spacing:-0.2px}
-    .tool-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem}
-    .cal-list{display:flex;flex-direction:column;gap:0.6rem}
-    .cal-item{display:flex;align-items:center;gap:0.85rem;font-size:0.88rem;color:var(--text2);padding:0.6rem 0.85rem;background:var(--surface);border-radius:8px;border:1px solid var(--border)}
-    .cal-day{font-weight:800;color:var(--text);min-width:34px;font-family:'Manrope',sans-serif}
+    /* LEARN */
+    .learn-section{background:#fff}
+    .learn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:1000px;margin:0 auto 2.5rem}
+    .learn-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+    .learn-card i{font-size:22px;color:var(--green);margin-bottom:0.75rem;display:block}
+    .learn-title{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;margin-bottom:0.4rem;letter-spacing:-0.2px}
+    .learn-desc{font-size:0.88rem;color:var(--muted);line-height:1.7}
+    .learn-cta{display:flex;gap:0.85rem;justify-content:center;flex-wrap:wrap}
 
     /* LIBRARY */
     .lib-section{background:var(--surface)}
@@ -177,8 +162,7 @@
     @media(max-width:900px){
       nav{padding:0.85rem 1.25rem}.nav-links{display:none}
       section{padding:4rem 1.25rem}
-      .hero-inner{grid-template-columns:1fr}
-      .radar-grid,.tools-grid,.lib-grid,.shop-grid{grid-template-columns:1fr}
+      .radar-grid,.learn-grid,.lib-grid,.shop-grid{grid-template-columns:1fr}
       .nl-form{flex-direction:column}
       footer{flex-direction:column;padding:1.5rem}
     }
@@ -191,7 +175,7 @@
   <a class="logo" href="#">Green<span>SniperX</span></a>
   <div class="nav-links">
     <a href="#library">Learner Library</a>
-    <a href="#tools">Tools</a>
+    <a href="tools.html">Tools</a>
     <a href="#shop">Shop</a>
     <a href="#community">Community</a>
   </div>
@@ -211,41 +195,20 @@
   <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Trading education · Tools · Community</div>
-      <h1>Snipe smarter.<br><span class="g">Trade sharper.</span></h1>
-      <p class="hero-sub">GreenSniperX is a free home base for day and swing traders — a growing library of guides, tools that do the math before you click buy, and a live community to talk it through with.</p>
-      <p class="hero-desc">No hype, no guaranteed returns. Just the process: what we're watching and why, how risk gets managed around it, and a place to talk it through with people doing the same thing.</p>
-      <div class="hero-cta">
-        <a class="btn btn-lg btn-primary" href="#newsletter">Join free</a>
-        <a class="btn btn-lg btn-outline" href="#library">Browse the library</a>
-      </div>
-      <div class="hero-trust">
-        <span>Free to join</span>
-        <span class="td"></span>
-        <span>No experience required</span>
-        <span class="td"></span>
-        <span>Educational content — not financial advice</span>
-      </div>
+    <div class="hero-eyebrow">Trading education · Tools · Community</div>
+    <h1>Snipe smarter.<br><span class="g">Trade sharper.</span></h1>
+    <p class="hero-sub">GreenSniperX is a free home base for day and swing traders — a growing library of guides, tools that do the math before you click buy, and a live community to talk it through with.</p>
+    <p class="hero-desc">No hype, no guaranteed returns. Just the process: what we're watching and why, how risk gets managed around it, and a place to talk it through with people doing the same thing. New here? The Learner Library is the best place to start.</p>
+    <div class="hero-cta">
+      <a class="btn btn-lg btn-primary" href="#newsletter">Join free</a>
+      <a class="btn btn-lg btn-outline" href="#library">Browse the library</a>
     </div>
-    <div>
-      <div class="calc-card">
-        <div class="calc-badge">Free tool · try it</div>
-        <div class="calc-title">Position size calculator</div>
-        <p class="calc-sub">Figure out how many shares to trade based on your risk — not a guess.</p>
-        <div class="calc-grid">
-          <div class="field"><label for="ps-account">Account size ($)</label><input type="number" id="ps-account" value="10000" oninput="calcPositionSize()"/></div>
-          <div class="field"><label for="ps-risk">Risk per trade (%)</label><input type="number" id="ps-risk" value="1" step="0.1" oninput="calcPositionSize()"/></div>
-          <div class="field"><label for="ps-entry">Entry price ($)</label><input type="number" id="ps-entry" value="100" oninput="calcPositionSize()"/></div>
-          <div class="field"><label for="ps-stop">Stop price ($)</label><input type="number" id="ps-stop" value="98" oninput="calcPositionSize()"/></div>
-        </div>
-        <div class="calc-result">
-          <div class="calc-row"><span>Amount at risk</span><strong id="ps-riskamt">$100.00</strong></div>
-          <div class="calc-row"><span>Risk per share</span><strong id="ps-pershare">$2.00</strong></div>
-          <div class="calc-row hl"><span>Position size</span><strong id="ps-shares">50 shares</strong></div>
-        </div>
-        <p class="plain-eng">Here's the math: multiply your account size by your risk percentage to get the dollar amount you're willing to lose (Amount at risk). Then find the gap between your entry price and stop price — that's how much you'd lose per share if you're wrong (Risk per share). Divide the first number by the second, and that's how many shares to buy.</p>
-      </div>
+    <div class="hero-trust">
+      <span>Free to join</span>
+      <span class="td"></span>
+      <span>No experience required</span>
+      <span class="td"></span>
+      <span>Educational content — not financial advice</span>
     </div>
   </div>
 </section>
@@ -256,69 +219,83 @@
     <div class="sec-head">
       <div class="sec-eyebrow">This week</div>
       <h2 class="sec-title">On the radar</h2>
-      <p class="sec-sub">A few of what we're tracking this week across stocks, options, and crypto — updated regularly. Educational examples of how we think through setups, not recommendations.</p>
+      <p class="sec-sub">A small sample of what we're tracking this week across stocks, options, and crypto — just four of dozens of names on our radar. Educational examples of how we think through setups, not recommendations.</p>
     </div>
-    <div class="radar-grid">
+    <div class="radar-grid radar-grid-4">
       <div class="radar-card">
         <div class="radar-sym">SPY</div>
-        <div class="radar-tag">Index · Swing</div>
-        <p class="radar-note">Watching the 580 level into the next CPI print. A clean break and hold could open room toward 590 — a rejection puts 570 back in focus.</p>
+        <div class="radar-tag">Index · Market gauge</div>
+        <p class="radar-note">SPY tracks the S&amp;P 500 — essentially the 500 largest U.S. companies bundled into one symbol. When you hear "the market" moved today, this is usually what people mean, and it's our first check before looking at anything else.</p>
+      </div>
+      <div class="radar-card">
+        <div class="radar-sym">QQQ</div>
+        <div class="radar-tag">Index · Tech</div>
+        <p class="radar-note">QQQ tracks the Nasdaq-100 — a tech-heavy basket that includes names like Apple, Microsoft, and Nvidia. When tech is leading or lagging the rest of the market, QQQ is usually where it shows up first.</p>
       </div>
       <div class="radar-card">
         <div class="radar-sym">NVDA</div>
-        <div class="radar-tag">Earnings · Day trade</div>
-        <p class="radar-note">Earnings Wednesday after the close. The implied move is wide, so this is a volatility event first — waiting for price to confirm a level before sizing in.</p>
+        <div class="radar-tag">Stock · Day trade</div>
+        <p class="radar-note">NVDA is one of the most actively traded individual stocks — high volume and big daily ranges make it a favorite for practicing entries and exits on a single name. We'll walk through how we'd approach a stock like this, live, in the community.</p>
       </div>
       <div class="radar-card">
         <div class="radar-sym">BTC</div>
         <div class="radar-tag">Crypto · Swing</div>
-        <p class="radar-note">Holding above the 200-day average. Watching for a higher-low pullback before adding to the existing position.</p>
+        <p class="radar-note">Bitcoin trades very differently from stocks — there's no open or close, and price can move at any hour. We're keeping it on the radar as we build out dedicated crypto content for the community — stay tuned.</p>
       </div>
     </div>
     <div class="radar-cta">
       <div>
         <div class="radar-cta-title">This is just a sample</div>
-        <p class="radar-cta-desc">We're tracking setups across stocks, options, and crypto every week — the full watchlist and live discussion happen in the community.</p>
+        <p class="radar-cta-desc">We're tracking dozens of names across stocks, options, and crypto every week — SPY, QQQ, NVDA, and BTC are just four of them. The full watchlist and live discussion happen in the community.</p>
       </div>
       <a class="btn btn-lg btn-primary" href="#community">See it live</a>
     </div>
   </div>
 </section>
 
-<!-- TOOLS -->
-<section class="tools-section" id="tools">
+<!-- WHAT YOU'LL LEARN -->
+<section class="learn-section" id="learn">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-eyebrow">Tools</div>
-      <h2 class="sec-title">Do the math before you click buy</h2>
-      <p class="sec-sub">Free calculators built for day and swing traders, plus a quick look at what's moving markets this week.</p>
+      <div class="sec-eyebrow">New here?</div>
+      <h2 class="sec-title">Here's what GreenSniperX teaches</h2>
+      <p class="sec-sub">If you've never placed a trade, start here. This is the ground we cover — step by step, in plain English, with no experience assumed.</p>
     </div>
-    <div class="tools-grid">
-      <div class="tool-card">
-        <div class="tool-title">Risk / reward calculator</div>
-        <p class="tool-sub">Enter your entry, stop, and target to see the ratio.</p>
-        <div class="calc-grid">
-          <div class="field"><label for="rr-entry">Entry ($)</label><input type="number" id="rr-entry" value="100" oninput="calcRR()"/></div>
-          <div class="field"><label for="rr-stop">Stop ($)</label><input type="number" id="rr-stop" value="98" oninput="calcRR()"/></div>
-          <div class="field"><label for="rr-target">Target ($)</label><input type="number" id="rr-target" value="106" oninput="calcRR()"/></div>
-        </div>
-        <div class="calc-result">
-          <div class="calc-row"><span>Risk per share</span><strong id="rr-risk">$2.00</strong></div>
-          <div class="calc-row"><span>Reward per share</span><strong id="rr-reward">$6.00</strong></div>
-          <div class="calc-row hl"><span>Ratio</span><strong id="rr-ratio">1 : 3.00</strong></div>
-        </div>
-        <p class="plain-eng">Here's the math: find the gap between your entry price and stop price — that's your risk per share. Find the gap between your entry price and target price — that's your reward per share. Divide reward by risk to get your ratio. A ratio of 1:3 means you stand to make $3 for every $1 you're risking.</p>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <i class="ti ti-device-laptop" aria-hidden="true"></i>
+        <div class="learn-title">Setting up your platform</div>
+        <p class="learn-desc">How to set up a broker account and a charting platform, step by step — so you're looking at the right thing before anything else.</p>
       </div>
-      <div class="tool-card">
-        <div class="tool-title">This week's calendar</div>
-        <p class="tool-sub">Key dates that tend to move markets — update weekly.</p>
-        <div class="cal-list">
-          <div class="cal-item"><span class="cal-day">Tue</span><span>CPI report — 8:30am ET</span></div>
-          <div class="cal-item"><span class="cal-day">Wed</span><span>NVDA earnings — after close</span></div>
-          <div class="cal-item"><span class="cal-day">Wed</span><span>FOMC minutes — 2:00pm ET</span></div>
-          <div class="cal-item"><span class="cal-day">Fri</span><span>Jobs report — 8:30am ET</span></div>
-        </div>
+      <div class="learn-card">
+        <i class="ti ti-chart-candle" aria-hidden="true"></i>
+        <div class="learn-title">Reading a chart</div>
+        <p class="learn-desc">What candlesticks are, what the shapes tend to mean, and how to read price action without feeling overwhelmed.</p>
       </div>
+      <div class="learn-card">
+        <i class="ti ti-ruler-2" aria-hidden="true"></i>
+        <div class="learn-title">Support, resistance &amp; volume</div>
+        <p class="learn-desc">The handful of levels and signals that matter most — and how to spot them on any chart.</p>
+      </div>
+      <div class="learn-card">
+        <i class="ti ti-activity" aria-hidden="true"></i>
+        <div class="learn-title">Key indicators</div>
+        <p class="learn-desc">A plain-English walkthrough of the few indicators worth knowing — what they show, and what they don't.</p>
+      </div>
+      <div class="learn-card">
+        <i class="ti ti-bolt" aria-hidden="true"></i>
+        <div class="learn-title">Day trading vs. swing trading</div>
+        <p class="learn-desc">Two different styles, two different paces. We break down what each looks like in practice so you can see which one fits you.</p>
+      </div>
+      <div class="learn-card">
+        <i class="ti ti-shield-check" aria-hidden="true"></i>
+        <div class="learn-title">Risk management</div>
+        <p class="learn-desc">The single most important habit in trading — how much to risk, when to walk away, and why it matters more than being "right."</p>
+      </div>
+    </div>
+    <div class="learn-cta">
+      <a class="btn btn-lg btn-outline" href="#library">Browse free guides</a>
+      <a class="btn btn-lg btn-primary" href="#shop">See the full Crash Course</a>
     </div>
   </div>
 </section>
@@ -423,7 +400,7 @@
   <nav class="footer-nav" aria-label="Footer">
     <a href="#">Home</a>
     <a href="#library">Library</a>
-    <a href="#tools">Tools</a>
+    <a href="tools.html">Tools</a>
     <a href="#shop">Shop</a>
     <a href="#community">Community</a>
     <a href="#">Privacy</a>
@@ -432,30 +409,5 @@
   <div class="footer-disc">GreenSniperX provides educational content for informational purposes only and is not a registered investment advisor. Trading involves substantial risk, including loss of principal. Examples shown are for illustration and do not guarantee future results.</div>
 </footer>
 
-<script>
-  function calcPositionSize(){
-    const acct = parseFloat(document.getElementById('ps-account').value) || 0;
-    const riskPct = parseFloat(document.getElementById('ps-risk').value) || 0;
-    const entry = parseFloat(document.getElementById('ps-entry').value) || 0;
-    const stop = parseFloat(document.getElementById('ps-stop').value) || 0;
-    const riskAmt = acct * (riskPct / 100);
-    const perShare = Math.abs(entry - stop);
-    const shares = perShare > 0 ? Math.floor(riskAmt / perShare) : 0;
-    document.getElementById('ps-riskamt').textContent = '$' + riskAmt.toFixed(2);
-    document.getElementById('ps-pershare').textContent = '$' + perShare.toFixed(2);
-    document.getElementById('ps-shares').textContent = shares.toLocaleString() + ' shares';
-  }
-  function calcRR(){
-    const entry = parseFloat(document.getElementById('rr-entry').value) || 0;
-    const stop = parseFloat(document.getElementById('rr-stop').value) || 0;
-    const target = parseFloat(document.getElementById('rr-target').value) || 0;
-    const risk = Math.abs(entry - stop);
-    const reward = Math.abs(target - entry);
-    const ratio = risk > 0 ? (reward / risk) : 0;
-    document.getElementById('rr-risk').textContent = '$' + risk.toFixed(2);
-    document.getElementById('rr-reward').textContent = '$' + reward.toFixed(2);
-    document.getElementById('rr-ratio').textContent = '1 : ' + ratio.toFixed(2);
-  }
-</script>
 </body>
 </html>

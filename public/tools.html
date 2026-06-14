@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tools — GreenSniperX</title>
+  <meta name="description" content="Free trading calculators for day and swing traders — position size, risk/reward, and this week's market-moving events."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --green:#059669;
+      --green-hover:#047857;
+      --green-pale:#ecfdf5;
+      --green-border:#a7f3d0;
+      --gold:#b45309;
+      --gold-pale:#fffbeb;
+      --gold-border:#fde68a;
+      --text:#111827;
+      --text2:#374151;
+      --muted:#6b7280;
+      --muted2:#9ca3af;
+      --border:#e5e7eb;
+      --border2:#d1d5db;
+      --surface:#f9fafb;
+      --surface2:#f3f4f6;
+      --dark:#0f172a;
+      --dark2:#1e293b;
+    }
+    html{scroll-behavior:smooth}
+    body{background:#fff;color:var(--text);font-family:'Inter',sans-serif;font-size:17px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+
+    /* BUTTONS */
+    .btn{font-family:'Inter',sans-serif;font-weight:600;cursor:pointer;border:none;transition:all 0.18s;display:inline-flex;align-items:center;gap:8px;letter-spacing:-0.1px;border-radius:10px;text-decoration:none}
+    .btn-lg{font-size:1rem;padding:0.85rem 1.75rem}
+    .btn-sm{font-size:0.85rem;padding:0.48rem 1rem}
+    .btn-primary{background:var(--green);color:#fff;box-shadow:0 1px 3px rgba(5,150,105,0.3)}
+    .btn-primary:hover{background:var(--green-hover);transform:translateY(-1px);box-shadow:0 4px 14px rgba(5,150,105,0.35)}
+    .btn-outline{background:transparent;color:var(--green);border:1.5px solid var(--green-border)}
+    .btn-outline:hover{background:var(--green-pale)}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(255,255,255,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(16px)}
+    .logo{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-0.5px;text-decoration:none}
+    .logo span{color:var(--green)}
+    .nav-links{display:flex;gap:2rem}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.18s}
+    .nav-links a:hover{color:var(--text)}
+
+    /* TICKER */
+    .ticker{background:var(--dark);overflow:hidden;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .ticker-track{display:flex;gap:3rem;animation:ticker-scroll 28s linear infinite;white-space:nowrap;width:max-content}
+    @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .tick{font-family:'Inter',monospace;font-size:0.7rem;font-weight:500;letter-spacing:0.3px}
+    .tick.up{color:#34d399}.tick.dn{color:#f87171}
+
+    /* HERO */
+    .hero{padding:6rem 2rem 5rem;background:#fff;position:relative;overflow:hidden}
+    .hero-grid-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(5,150,105,0.06) 1px,transparent 1px);background-size:28px 28px;z-index:0}
+    .hero-glow{position:absolute;right:-5%;top:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(5,150,105,0.06) 0%,transparent 70%);z-index:0;pointer-events:none}
+    .hero-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:5rem;align-items:center}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:0.82rem;font-weight:600;color:var(--green);background:var(--green-pale);padding:0.3rem 0.85rem;border-radius:20px;border:1px solid var(--green-border);margin-bottom:1.75rem;letter-spacing:0.1px}
+    .hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 1.8s infinite}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+    .hero h1{font-family:'Manrope',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.1;color:var(--text);margin-bottom:1.25rem;letter-spacing:-1.5px}
+    .hero h1 .g{color:var(--green)}
+    .hero-sub{font-size:1.15rem;color:var(--text2);font-weight:500;margin-bottom:0.75rem;line-height:1.6;max-width:480px}
+    .hero-desc{font-size:1rem;color:var(--muted);line-height:1.8;max-width:470px;margin-bottom:2rem}
+    .hero-cta{display:flex;gap:0.85rem;flex-wrap:wrap;margin-bottom:1.25rem}
+    .hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:0.6rem;font-size:0.82rem;color:var(--muted2)}
+    .td{width:3px;height:3px;border-radius:50%;background:var(--border2);flex-shrink:0}
+
+    /* CALCULATOR CARD */
+    .calc-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.75rem;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
+    .calc-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:600;color:var(--green);background:var(--green-pale);padding:0.2rem 0.65rem;border-radius:20px;margin-bottom:1rem;border:1px solid var(--green-border)}
+    .calc-title{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:0.25rem;letter-spacing:-0.3px}
+    .calc-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+    .field label{display:block;font-size:0.75rem;font-weight:600;color:var(--text2);margin-bottom:0.3rem}
+    .field input{width:100%;padding:0.55rem 0.7rem;border:1px solid var(--border2);border-radius:8px;font-size:0.88rem;font-family:'Inter',sans-serif;background:#fff;color:var(--text)}
+    .field input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-pale)}
+    .calc-result{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1rem}
+    .calc-row{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--text2);padding:0.25rem 0}
+    .calc-row strong{color:var(--text);font-weight:800;font-family:'Manrope',sans-serif}
+    .calc-row.hl strong{color:var(--green);font-size:1.15rem}
+    .plain-eng{background:var(--gold-pale);border:1px solid var(--gold-border);border-radius:8px;padding:0.7rem 0.85rem;margin-top:0.85rem;font-size:0.82rem;color:#7c2d12;line-height:1.6}
+
+    /* SHARED SECTION */
+    .sec-eyebrow{display:inline-block;font-size:0.78rem;font-weight:600;color:var(--green);letter-spacing:0.3px;margin-bottom:0.65rem}
+    .sec-title{font-family:'Manrope',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;line-height:1.15;color:var(--text);margin-bottom:0.6rem;letter-spacing:-0.5px}
+    .sec-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.75}
+    .sec-head{text-align:center;margin-bottom:3.5rem}
+    .sec-head .sec-sub{margin:0 auto}
+    section{padding:6rem 2rem}
+
+    /* RADAR */
+    .radar-section{background:var(--surface)}
+    .radar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:1000px;margin:0 auto}
+    .radar-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+    .radar-sym{font-family:'Manrope',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:0.5rem}
+    .radar-tag{display:inline-block;font-size:0.72rem;font-weight:700;color:var(--green);background:var(--green-pale);border:1px solid var(--green-border);padding:0.2rem 0.65rem;border-radius:20px;margin-bottom:0.75rem}
+    .radar-note{font-size:0.9rem;color:var(--text2);line-height:1.7}
+    .radar-cta{max-width:1000px;margin:2rem auto 0;background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+    .radar-cta-title{font-family:'Manrope',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:0.35rem;letter-spacing:-0.2px}
+    .radar-cta-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;max-width:480px}
+
+    /* TOOLS */
+    .tools-section{background:#fff}
+    .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1000px;margin:0 auto;align-items:start}
+    .tool-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+    .tool-title{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;margin-bottom:0.25rem;letter-spacing:-0.2px}
+    .tool-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem}
+    .cal-list{display:flex;flex-direction:column;gap:0.6rem}
+    .cal-item{display:flex;align-items:center;gap:0.85rem;font-size:0.88rem;color:var(--text2);padding:0.6rem 0.85rem;background:var(--surface);border-radius:8px;border:1px solid var(--border)}
+    .cal-day{font-weight:800;color:var(--text);min-width:34px;font-family:'Manrope',sans-serif}
+
+    /* LIBRARY */
+    .lib-section{background:var(--surface)}
+    .lib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1000px;margin:0 auto 2rem}
+    .lib-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.4rem;display:block;text-decoration:none;color:inherit;transition:border-color 0.18s,transform 0.18s}
+    .lib-card:hover{border-color:var(--green-border);transform:translateY(-2px)}
+    .lib-card i{font-size:20px;color:var(--green);margin-bottom:0.75rem;display:block}
+    .lib-tag{font-size:0.7rem;font-weight:700;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.4rem}
+    .lib-title{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;margin-bottom:0.4rem;letter-spacing:-0.2px}
+    .lib-desc{font-size:0.85rem;color:var(--muted);line-height:1.65}
+    .lib-link{font-size:0.78rem;font-weight:700;color:var(--green);display:flex;align-items:center;gap:4px;margin-top:0.85rem}
+    .lib-more{text-align:center}
+
+    /* SHOP */
+    .shop-section{background:#fff}
+    .shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;max-width:1000px;margin:0 auto}
+    .shop-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column}
+    .shop-type{font-size:0.7rem;font-weight:700;color:var(--gold);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.5rem}
+    .shop-title{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:0.4rem;letter-spacing:-0.3px}
+    .shop-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;flex:1}
+    .shop-price{font-family:'Manrope',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:0.85rem}
+
+    /* COMMUNITY */
+    .community-section{background:var(--dark);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
+    .community-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(5,150,105,0.12) 0%,transparent 70%);pointer-events:none}
+    .community-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
+    .community-section .sec-eyebrow{color:#34d399}
+    .community-section h2{font-family:'Manrope',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:#fff;margin-bottom:0.85rem;letter-spacing:-0.5px}
+    .community-section .community-intro{color:rgba(255,255,255,0.55);font-size:1rem;line-height:1.8;margin-bottom:2.25rem;max-width:480px;margin-left:auto;margin-right:auto}
+    .community-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.75rem;display:flex;flex-direction:column;text-align:left;max-width:420px;margin:0 auto}
+    .community-card.cc-featured{border-color:rgba(52,211,153,0.3);background:rgba(5,150,105,0.08)}
+    .cc-tag{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);padding:0.2rem 0.65rem;border-radius:20px;margin-bottom:0.85rem}
+    .cc-tag.gold{color:#34d399;background:rgba(52,211,153,0.12)}
+    .cc-title{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:0.5rem;letter-spacing:-0.3px}
+    .cc-desc{font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:1.1rem;flex:1}
+    .cc-price{font-family:'Manrope',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:0.85rem}
+
+    /* NEWSLETTER */
+    .nl-section{background:var(--surface);padding:5rem 2rem;text-align:center}
+    .nl-inner{max-width:480px;margin:0 auto}
+    .nl-inner h2{font-family:'Manrope',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:0.6rem;letter-spacing:-0.5px}
+    .nl-inner p{color:var(--muted);font-size:0.95rem;margin-bottom:1.5rem}
+    .nl-form{display:flex;gap:0.6rem}
+    .nl-form input{flex:1;padding:0.75rem 1rem;border:1px solid var(--border2);border-radius:10px;font-size:0.95rem;font-family:'Inter',sans-serif}
+    .nl-form input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-pale)}
+    .nl-fine{font-size:0.78rem;color:var(--muted2);margin-top:0.85rem}
+
+    /* FOOTER */
+    footer{background:#fff;border-top:1px solid var(--border);padding:2.5rem;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem}
+    .footer-logo{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;color:var(--text);letter-spacing:-0.3px;margin-bottom:0.3rem}
+    .footer-logo span{color:var(--green)}
+    .footer-copy{font-size:0.78rem;color:var(--muted)}
+    .footer-nav{display:flex;flex-wrap:wrap;gap:1.5rem}
+    .footer-nav a{color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.18s}
+    .footer-nav a:hover{color:var(--text)}
+    .footer-disc{font-size:0.72rem;color:var(--muted2);max-width:420px;line-height:1.6}
+
+    @media(max-width:900px){
+      nav{padding:0.85rem 1.25rem}.nav-links{display:none}
+      section{padding:4rem 1.25rem}
+      .hero-inner{grid-template-columns:1fr}
+      .radar-grid,.tools-grid,.lib-grid,.shop-grid{grid-template-columns:1fr}
+      .nl-form{flex-direction:column}
+      footer{flex-direction:column;padding:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">Green<span>SniperX</span></a>
+  <div class="nav-links">
+    <a href="index.html#library">Learner Library</a>
+    <a href="tools.html">Tools</a>
+    <a href="index.html#shop">Shop</a>
+    <a href="index.html#community">Community</a>
+  </div>
+  <a class="btn btn-sm btn-primary" href="index.html#newsletter">Join free</a>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="tick up">SPY +1.4%</span><span class="tick up">NVDA +3.2%</span><span class="tick dn">GOLD −0.4%</span><span class="tick up">QQQ +1.8%</span><span class="tick up">TSLA +2.6%</span><span class="tick dn">OIL −1.1%</span><span class="tick up">AAPL +0.9%</span><span class="tick up">ETH +3.0%</span><span class="tick dn">EUR −0.2%</span><span class="tick up">BTC +4.5%</span>
+    <span class="tick up">SPY +1.4%</span><span class="tick up">NVDA +3.2%</span><span class="tick dn">GOLD −0.4%</span><span class="tick up">QQQ +1.8%</span><span class="tick up">TSLA +2.6%</span><span class="tick dn">OIL −1.1%</span><span class="tick up">AAPL +0.9%</span><span class="tick up">ETH +3.0%</span><span class="tick dn">EUR −0.2%</span><span class="tick up">BTC +4.5%</span>
+  </div>
+</div>
+
+<!-- TOOLS INTRO + POSITION SIZE -->
+<section class="tools-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Tools</div>
+      <h2 class="sec-title">Do the math before you click buy</h2>
+      <p class="sec-sub">Free calculators for traders who already know the basics — position size, risk/reward, and this week's market-moving events. New here? Start with the <a href="index.html#library" style="color:var(--green);font-weight:700;text-decoration:none">Learner Library</a> first.</p>
+    </div>
+    <div style="max-width:480px;margin:0 auto">
+      <div class="calc-card">
+        <div class="calc-badge">Free tool · try it</div>
+        <div class="calc-title">Position size calculator</div>
+        <p class="calc-sub">Figure out how many shares to trade based on your risk — not a guess.</p>
+        <div class="calc-grid">
+          <div class="field"><label for="ps-account">Account size ($)</label><input type="number" id="ps-account" value="10000" oninput="calcPositionSize()"/></div>
+          <div class="field"><label for="ps-risk">Risk per trade (%)</label><input type="number" id="ps-risk" value="1" step="0.1" oninput="calcPositionSize()"/></div>
+          <div class="field"><label for="ps-entry">Entry price ($)</label><input type="number" id="ps-entry" value="100" oninput="calcPositionSize()"/></div>
+          <div class="field"><label for="ps-stop">Stop price ($)</label><input type="number" id="ps-stop" value="98" oninput="calcPositionSize()"/></div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-row"><span>Amount at risk</span><strong id="ps-riskamt">$100.00</strong></div>
+          <div class="calc-row"><span>Risk per share</span><strong id="ps-pershare">$2.00</strong></div>
+          <div class="calc-row hl"><span>Position size</span><strong id="ps-shares">50 shares</strong></div>
+        </div>
+        <p class="plain-eng">Here's the math: multiply your account size by your risk percentage to get the dollar amount you're willing to lose (Amount at risk). Then find the gap between your entry price and stop price — that's how much you'd lose per share if you're wrong (Risk per share). Divide the first number by the second, and that's how many shares to buy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK/REWARD + CALENDAR -->
+<section class="tools-section" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-title">Risk / reward calculator</div>
+        <p class="tool-sub">Enter your entry, stop, and target to see the ratio.</p>
+        <div class="calc-grid">
+          <div class="field"><label for="rr-entry">Entry ($)</label><input type="number" id="rr-entry" value="100" oninput="calcRR()"/></div>
+          <div class="field"><label for="rr-stop">Stop ($)</label><input type="number" id="rr-stop" value="98" oninput="calcRR()"/></div>
+          <div class="field"><label for="rr-target">Target ($)</label><input type="number" id="rr-target" value="106" oninput="calcRR()"/></div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-row"><span>Risk per share</span><strong id="rr-risk">$2.00</strong></div>
+          <div class="calc-row"><span>Reward per share</span><strong id="rr-reward">$6.00</strong></div>
+          <div class="calc-row hl"><span>Ratio</span><strong id="rr-ratio">1 : 3.00</strong></div>
+        </div>
+        <p class="plain-eng">Here's the math: find the gap between your entry price and stop price — that's your risk per share. Find the gap between your entry price and target price — that's your reward per share. Divide reward by risk to get your ratio. A ratio of 1:3 means you stand to make $3 for every $1 you're risking.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-title">This week's calendar</div>
+        <p class="tool-sub">Key dates that tend to move markets — update weekly.</p>
+        <div class="cal-list">
+          <div class="cal-item"><span class="cal-day">Tue</span><span>CPI report — 8:30am ET</span></div>
+          <div class="cal-item"><span class="cal-day">Wed</span><span>NVDA earnings — after close</span></div>
+          <div class="cal-item"><span class="cal-day">Wed</span><span>FOMC minutes — 2:00pm ET</span></div>
+          <div class="cal-item"><span class="cal-day">Fri</span><span>Jobs report — 8:30am ET</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Green<span>SniperX</span></div>
+    <div class="footer-copy">© 2026 GreenSniperX · greensniperx.com</div>
+  </div>
+  <nav class="footer-nav" aria-label="Footer">
+    <a href="index.html">Home</a>
+    <a href="index.html#library">Library</a>
+    <a href="tools.html">Tools</a>
+    <a href="index.html#shop">Shop</a>
+    <a href="index.html#community">Community</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </nav>
+  <div class="footer-disc">GreenSniperX provides educational content for informational purposes only and is not a registered investment advisor. Trading involves substantial risk, including loss of principal. Examples shown are for illustration and do not guarantee future results.</div>
+</footer>
+
+<script>
+  function calcPositionSize(){
+    const acct = parseFloat(document.getElementById('ps-account').value) || 0;
+    const riskPct = parseFloat(document.getElementById('ps-risk').value) || 0;
+    const entry = parseFloat(document.getElementById('ps-entry').value) || 0;
+    const stop = parseFloat(document.getElementById('ps-stop').value) || 0;
+    const riskAmt = acct * (riskPct / 100);
+    const perShare = Math.abs(entry - stop);
+    const shares = perShare > 0 ? Math.floor(riskAmt / perShare) : 0;
+    document.getElementById('ps-riskamt').textContent = '$' + riskAmt.toFixed(2);
+    document.getElementById('ps-pershare').textContent = '$' + perShare.toFixed(2);
+    document.getElementById('ps-shares').textContent = shares.toLocaleString() + ' shares';
+  }
+  function calcRR(){
+    const entry = parseFloat(document.getElementById('rr-entry').value) || 0;
+    const stop = parseFloat(document.getElementById('rr-stop').value) || 0;
+    const target = parseFloat(document.getElementById('rr-target').value) || 0;
+    const risk = Math.abs(entry - stop);
+    const reward = Math.abs(target - entry);
+    const ratio = risk > 0 ? (reward / risk) : 0;
+    document.getElementById('rr-risk').textContent = '$' + risk.toFixed(2);
+    document.getElementById('rr-reward').textContent = '$' + reward.toFixed(2);
+    document.getElementById('rr-ratio').textContent = '1 : ' + ratio.toFixed(2);
+  }
+</script>
+</body>
+</html>
