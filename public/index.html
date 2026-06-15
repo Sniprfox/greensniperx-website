@@ -62,6 +62,7 @@
     .hero{padding:6rem 2rem 5rem;background:#fff;position:relative;overflow:hidden}
     .hero-grid-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(5,150,105,0.06) 1px,transparent 1px);background-size:28px 28px;z-index:0}
     .hero-glow{position:absolute;right:-5%;top:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(5,150,105,0.06) 0%,transparent 70%);z-index:0;pointer-events:none}
+    .hero-reticle{position:absolute;right:-5%;top:-10%;width:500px;height:500px;z-index:0;pointer-events:none}
     .hero-inner{position:relative;z-index:2;max-width:720px;margin:0 auto;text-align:center}
     .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:0.82rem;font-weight:600;color:var(--green);background:var(--green-pale);padding:0.3rem 0.85rem;border-radius:20px;border:1px solid var(--green-border);margin-bottom:1.75rem;letter-spacing:0.1px}
     .hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 1.8s infinite}
@@ -195,6 +196,18 @@
 <section class="hero">
   <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
+  <svg class="hero-reticle" viewBox="0 0 500 500" aria-hidden="true">
+    <circle cx="250" cy="250" r="190" fill="none" stroke="rgba(5,150,105,0.12)" stroke-width="1"/>
+    <circle cx="250" cy="250" r="150" fill="none" stroke="rgba(5,150,105,0.12)" stroke-width="1"/>
+    <circle cx="250" cy="250" r="110" fill="none" stroke="rgba(5,150,105,0.12)" stroke-width="1"/>
+    <line x1="20" y1="250" x2="480" y2="250" stroke="rgba(5,150,105,0.10)" stroke-width="1"/>
+    <line x1="250" y1="20" x2="250" y2="480" stroke="rgba(5,150,105,0.10)" stroke-width="1"/>
+    <line x1="384" y1="384" x2="396" y2="396" stroke="rgba(5,150,105,0.14)" stroke-width="1.5"/>
+    <line x1="116" y1="384" x2="104" y2="396" stroke="rgba(5,150,105,0.14)" stroke-width="1.5"/>
+    <line x1="116" y1="116" x2="104" y2="104" stroke="rgba(5,150,105,0.14)" stroke-width="1.5"/>
+    <line x1="384" y1="116" x2="396" y2="104" stroke="rgba(5,150,105,0.14)" stroke-width="1.5"/>
+    <circle cx="250" cy="250" r="3" fill="rgba(5,150,105,0.3)"/>
+  </svg>
   <div class="hero-inner">
     <div class="hero-eyebrow">Trading education · Tools · Community</div>
     <h1>Snipe smarter.<br><span class="g">Trade sharper.</span></h1>
