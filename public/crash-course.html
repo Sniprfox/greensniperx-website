@@ -70,7 +70,7 @@ li b,li strong{color:var(--tx)}
 /* BOXES */
 .bx{border-radius:var(--r);padding:1.1rem 1.35rem;margin:1.25rem 0;border-left:4px solid}
 .bxl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.48rem}
-.bx-g{background:#061812;border-color:var(--g)}.bx-g .bxl{color:var(--g)}
+.bx-g{background:#061812;border-color:var(--g)} .bx-rl{background:#1a1506;border-color:var(--gold)}.bx-g .bxl{color:var(--g)}
 .bx-r{background:#1e0c0c;border-color:var(--red)}.bx-r .bxl{color:var(--red)}
 .bx-b{background:#0b1d2e;border-color:var(--blue)}.bx-b .bxl{color:var(--blue)}
 .bx-y{background:#181500;border-color:var(--gold)}.bx-y .bxl{color:var(--gold)}
@@ -504,6 +504,9 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
   <div class="ps ps-day" id="c3-d"><div class="psl">🔥 Day Trader — 5-Minute Pattern Rules</div><p>On a 5-minute chart, never trade a Hammer or Engulfing in isolation. It must form at a key level (VWAP, 9 EMA, Opening Range high/low, or daily support) AND price must be trending in the same direction. A Hammer at a random price with no key level beneath it is not a trade.</p></div>
   <div class="ps ps-sw" id="c3-s"><div class="psl">🌊 Swing Trader — Daily Pattern Rules</div><p>On the daily chart, a Bullish Engulfing or Hammer at support with volume above the 20-day average is one of your highest-probability setups. Volume confirms institutional participation. A reversal pattern on low volume is less reliable — wait for volume confirmation whenever possible.</p></div>
 
+
+  <div class="bx bx-rl"><div class="bxl">🌍  Real Life — Think of It Like This</div><p style="font-size:.85rem;line-height:1.75">Think of each candlestick like a one-sentence summary of a fight between buyers and sellers. A long green candle means buyers completely took over — like one team dominating the whole game. A Hammer means the sellers tried hard (the long lower wick) but by the time the buzzer sounded, buyers pushed the score back up. A Doji means neither side could get the lead — a tied game at halftime. Once you can read that story on any candle, every chart in every market starts making sense.</p></div>
+
   <div class="quiz" id="quiz-3">
     <div class="qh"><div class="qi">🧠</div><div><div class="qt">Chapter 3 — Knowledge Check</div><div class="qs2">4 questions</div></div></div>
     <div class="qq" id="qq3-1"><div class="qqt">1. A Bullish Engulfing candle forms at a support level. What does this signal?</div><div class="qos"><div class="qo" onclick="pick(3,1,this,'A')"><span class="ol">A</span>Sell immediately — a reversal down is coming</div><div class="qo" onclick="pick(3,1,this,'B')"><span class="ol">B</span>Strong buy signal — buyers completely overwhelmed sellers at a key level</div><div class="qo" onclick="pick(3,1,this,'C')"><span class="ol">C</span>Neutral — wait for three more candles</div><div class="qo" onclick="pick(3,1,this,'D')"><span class="ol">D</span>Only valid on weekly charts</div></div><div class="qexp" id="qe3-1">✅ Bullish Engulfing at support = one of the strongest buy signals. The green candle completely engulfs the previous red candle — buyers overwhelmed sellers. At a support level, this shows buyers defending price aggressively.</div></div>
@@ -599,6 +602,9 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
   <div class="ps ps-day" id="c5-d"><div class="psl">🔥 Day Trader — Your Indicator Priority</div><p>For day trading: VWAP is #1. Always. Then 9 EMA for momentum direction. Then RSI on the 5-minute chart for overbought/oversold at key levels. MACD is secondary on intraday — use it to confirm, not lead. If VWAP + 9 EMA + support all agree = strong trade. Two or fewer agree = skip.</p></div>
   <div class="ps ps-sw" id="c5-s"><div class="psl">🌊 Swing Trader — Your Indicator Priority</div><p>For swing trading: 20 EMA pullback on daily is #1. Then RSI for oversold confirmation. Then MACD crossover as final confirmation before entering. When price touches 20 EMA + RSI is 35–45 + MACD is curling up = one of the cleanest setups in swing trading. Run this checklist every time.</p></div>
 
+
+  <div class="bx bx-rl"><div class="bxl">🌍  Real Life — Think of It Like This</div><p style="font-size:.85rem;line-height:1.75">Think of the EMA as the general direction a crowd is moving at a concert. Even if a few people are pushing the other way, you can tell which way the whole room is flowing. VWAP is like the price a wholesale buyer got — if you're paying more than that, you're the retail customer; less, you got a deal. RSI is asking whether the crowd is already maxed out on energy. MACD is the DJ noticing the energy starting to fade before the crowd does — a heads-up that a shift is coming.</p></div>
+
   <div class="quiz" id="quiz-5">
     <div class="qh"><div class="qi">🧠</div><div><div class="qt">Chapter 5 — Knowledge Check</div><div class="qs2">4 questions</div></div></div>
     <div class="qq" id="qq5-1"><div class="qqt">1. During a day trade, price is ABOVE VWAP. What is your directional bias?</div><div class="qos"><div class="qo" onclick="pick(5,1,this,'A')"><span class="ol">A</span>Bearish — short the stock</div><div class="qo" onclick="pick(5,1,this,'B')"><span class="ol">B</span>Bullish — institutions are buying above VWAP, lean long</div><div class="qo" onclick="pick(5,1,this,'C')"><span class="ol">C</span>Neutral — VWAP doesn't indicate direction</div><div class="qo" onclick="pick(5,1,this,'D')"><span class="ol">D</span>VWAP only matters after 2 PM</div></div><div class="qexp" id="qe5-1">✅ Above VWAP = bullish. Institutional buyers are in control. Your best day trades are longs — buying dips to VWAP that hold, or buying breakouts from key levels above VWAP.</div></div>
@@ -659,6 +665,9 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
   <p><strong>Best window: 9:45 AM – 11:30 AM Eastern.</strong> Midday (12–2 PM) is slow, choppy, and full of fake moves.</p>
   <p><strong>PDT Rule:</strong> Under $25,000 in a margin account = max 3 day trades per 5 business days.</p></div>
 
+
+  <div class="bx bx-rl"><div class="bxl">🌍  Real Life — Think of It Like This</div><p style="font-size:.85rem;line-height:1.75">A day trader is like a street food vendor who sets up in the morning, sells all day, and packs everything up before dark — no inventory carried home, no overnight risk. Range trading is parking at the same corner every day because you know exactly when the lunch crowd arrives. The breakout setup is when a new restaurant opens and suddenly a line forms around the block — that surge of energy is your signal. Momentum trading is when a celebrity posts about a spot and the line forms instantly — exciting and fast, but also over before most people even get in.</p></div>
+
   <div class="quiz" id="quiz-6">
     <div class="qh"><div class="qi">🧠</div><div><div class="qt">Chapter 6 — Knowledge Check</div><div class="qs2">4 questions</div></div></div>
     <div class="qq" id="qq6-1"><div class="qqt">1. In ORB, what do you do during the first 15 minutes (9:30–9:45 AM)?</div><div class="qos"><div class="qo" onclick="pick(6,1,this,'A')"><span class="ol">A</span>Immediately buy the strongest mover</div><div class="qo" onclick="pick(6,1,this,'B')"><span class="ol">B</span>Watch only — mark the Opening Range at 9:45 and wait for the breakout</div><div class="qo" onclick="pick(6,1,this,'C')"><span class="ol">C</span>Short every stock that opens red</div><div class="qo" onclick="pick(6,1,this,'D')"><span class="ol">D</span>Place limit orders at the previous day's high</div></div><div class="qexp" id="qe6-1">✅ Watch only for the first 15 minutes. The opening is the most volatile and unpredictable window of the day. Mark the Opening Range at 9:45 and wait for a confirmed breakout or breakdown before placing any trade.</div></div>
@@ -714,6 +723,9 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
       <div class="ci" onclick="ck2(this)"><div class="ci-cb"></div><div class="ci-tx"><strong>Log yesterday's trades</strong> — What worked? What didn't? This 5-minute review compounds your edge over hundreds of trades.</div></div>
     </div>
   </div>
+
+
+  <div class="bx bx-rl"><div class="bxl">🌍  Real Life — Think of It Like This</div><p style="font-size:.85rem;line-height:1.75">A trade without a stop-loss is like driving without a seatbelt — fine most days, and then one day it isn't, and it matters enormously. A stop doesn't prevent bad days; it makes sure a bad day stays a bad day instead of becoming a disaster. A liquidity sweep is like a pothole that makes your car swerve — scary, but if your vehicle is solid (your plan is right), you straighten out and keep going. The traders who crash are the ones who panic-swerved into oncoming traffic instead of riding it out.</p></div>
 
   <div class="quiz" id="quiz-7">
     <div class="qh"><div class="qi">🧠</div><div><div class="qt">Chapter 7 — Knowledge Check</div><div class="qs2">4 questions</div></div></div>
@@ -774,6 +786,9 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
     </div>
   </div>
 
+
+  <div class="bx bx-rl"><div class="bxl">🌍  Real Life — Think of It Like This</div><p style="font-size:.85rem;line-height:1.75">A swing trader is like a surfer waiting for the right wave. They don't paddle out for every ripple — they sit, watch, and wait for a wave actually worth riding. When it comes, they commit fully, ride it for as long as it's moving in their direction, and get off before it crashes. The trend pullback is catching a wave mid-swell instead of chasing it from shore after it has already passed everyone else by.</p></div>
+
   <div class="quiz" id="quiz-8">
     <div class="qh"><div class="qi">🧠</div><div><div class="qt">Chapter 8 — Knowledge Check</div><div class="qs2">4 questions</div></div></div>
     <div class="qq" id="qq8-1"><div class="qqt">1. In the Pullback in Uptrend strategy, when do you enter?</div><div class="qos"><div class="qo" onclick="pick(8,1,this,'A')"><span class="ol">A</span>When the stock is making all-time highs</div><div class="qo" onclick="pick(8,1,this,'B')"><span class="ol">B</span>After the pullback reaches support or 20 EMA AND a reversal candle confirms</div><div class="qo" onclick="pick(8,1,this,'C')"><span class="ol">C</span>Immediately when any stock starts moving up</div><div class="qo" onclick="pick(8,1,this,'D')"><span class="ol">D</span>During the strongest momentum day only</div></div><div class="qexp" id="qe8-1">✅ Wait for the pullback to reach a level (support or 20 EMA) AND for a reversal candle to confirm. Entering before the reversal means you are catching a falling knife. The candle confirms buyers have stepped in.</div></div>
@@ -820,6 +835,9 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
   <p><strong>Each morning (5 min):</strong> Check TradingView for your open positions. Any stops need adjusting? Any patterns forming at your target? Check earnings calendar for the week.</p>
   <p><strong>Each market close (5 min):</strong> Review daily candles of your open positions. Is the thesis still intact? If yes, hold. If not, exit.</p>
   <p><strong>Friday evening:</strong> Log all closed trades. Calculate win rate and average R:R for the week. This weekly audit improves your edge faster than any course.</p></div>
+
+
+  <div class="bx bx-rl"><div class="bxl">🌍  Real Life — Think of It Like This</div><p style="font-size:.85rem;line-height:1.75">Managing a swing trade while it's open is like watching bread bake. The urge to open the oven every five minutes doesn't make it bake faster — it just lets the heat out. You set the temperature (your stop), you set the timer (your target), and then you let it run. Constantly checking, adjusting, and second-guessing the recipe is exactly how you ruin what was already working. If nothing has fundamentally changed, the plan you made on day one is still right.</p></div>
 
   <div class="quiz" id="quiz-9">
     <div class="qh"><div class="qi">🧠</div><div><div class="qt">Chapter 9 — Knowledge Check</div><div class="qs2">4 questions</div></div></div>
@@ -918,7 +936,9 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
     </div>
   </div>
 
-  <div class="quiz" id="quiz-10">
+  <div 
+  <div class="bx bx-rl"><div class="bxl">🌍  Real Life — Think of It Like This</div><p style="font-size:.85rem;line-height:1.75">You lose $20 at a slot machine and the urge hits: put in $50 to win it back. But the machine has no memory of what you just lost. Trading after a loss with bigger size to "get even" is identical thinking — the market doesn't know or care what happened to you on the last trade. The only thing revenge trading changes is how much you can lose on the next one.</p></div>
+class="quiz" id="quiz-10">
     <div class="qh"><div class="qi">🧠</div><div><div class="qt">Chapter 10 — Final Knowledge Check</div><div class="qs2">4 questions — last one!</div></div></div>
     <div class="qq" id="qq10-1"><div class="qqt">1. $15,000 account, 2% risk rule. Entry at $60, stop at $57. How many shares?</div><div class="qos"><div class="qo" onclick="pick(10,1,this,'A')"><span class="ol">A</span>100 shares</div><div class="qo" onclick="pick(10,1,this,'B')"><span class="ol">B</span>50 shares</div><div class="qo" onclick="pick(10,1,this,'C')"><span class="ol">C</span>Exactly 100 shares</div><div class="qo" onclick="pick(10,1,this,'D')"><span class="ol">D</span>200 shares</div></div><div class="qexp" id="qe10-1">✅ ($15,000 × 0.02) ÷ ($60 − $57) = $300 ÷ $3 = 100 shares. Max loss = 100 × $3 = $300 = 2% of account.</div></div>
     <div class="qq" id="qq10-2"><div class="qqt">2. With a 40% win rate and 2:1 reward-to-risk, are you profitable over 10 trades?</div><div class="qos"><div class="qo" onclick="pick(10,2,this,'A')"><span class="ol">A</span>No — below 50% win rate always loses money</div><div class="qo" onclick="pick(10,2,this,'B')"><span class="ol">B</span>Yes — 4 winners × $200 − 6 losers × $100 = +$200 profit</div><div class="qo" onclick="pick(10,2,this,'C')"><span class="ol">C</span>Break even only</div><div class="qo" onclick="pick(10,2,this,'D')"><span class="ol">D</span>You need at least 60% win rate to be profitable</div></div><div class="qexp" id="qe10-2">✅ 4 wins × $200 = $800 profit. 6 losses × $100 = $600 loss. Net = +$200 profit at a 40% win rate. Reward-to-risk matters more than win rate. A 40% win rate with 2:1 R:R is profitable. A 70% win rate with 1:2 R:R (risking more than you gain) is not.</div></div>
@@ -980,7 +1000,9 @@ body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
   <h2>🧠 Master Review — 10 Questions From the Whole Course</h2>
   <p>One question per chapter. If you can get these right, you've genuinely absorbed the system.</p>
 
-  <div class="quiz" id="quiz-11">
+  <div class="quiz" 
+  <div class="bx bx-rl"><div class="bxl">🌍  Real Life — Think of It Like This</div><p style="font-size:.85rem;line-height:1.75">A professional poker player never goes all-in on every hand — even a great hand. They bet a consistent small amount so a bad run of cards doesn't wipe them out before the good run arrives. The 1–2% rule works the same way: no single trade can end your game. The traders who blow up usually aren't wrong more than others — they just ran out of money before their edge had time to work.</p></div>
+id="quiz-11">
     <div class="qh"><div class="qi">🏆</div><div><div class="qt">Master Review</div><div class="qs2">10 questions — one from each chapter</div></div></div>
     <div class="qq" id="qq11-1"><div class="qqt">1. (Ch.1) Why reset your Webull paper account to $25,000?</div><div class="qos"><div class="qo" onclick="pick(11,1,this,'A')"><span class="ol">A</span>It's required to open the app</div><div class="qo" onclick="pick(11,1,this,'B')"><span class="ol">B</span>$25,000 is the PDT threshold — it simulates a real day trading account</div><div class="qo" onclick="pick(11,1,this,'C')"><span class="ol">C</span>It's the minimum to buy any stock</div><div class="qo" onclick="pick(11,1,this,'D')"><span class="ol">D</span>The balance doesn't matter</div></div><div class="qexp" id="qe11-1">✅ $25,000 is the Pattern Day Trader threshold. Practicing at this level trains you under realistic conditions.</div></div>
     <div class="qq" id="qq11-2"><div class="qqt">2. (Ch.2) Price is trading ABOVE VWAP. What's your bias?</div><div class="qos"><div class="qo" onclick="pick(11,2,this,'A')"><span class="ol">A</span>Bearish — short it</div><div class="qo" onclick="pick(11,2,this,'B')"><span class="ol">B</span>Bullish — buyers are in control, lean long</div><div class="qo" onclick="pick(11,2,this,'C')"><span class="ol">C</span>VWAP doesn't indicate direction</div><div class="qo" onclick="pick(11,2,this,'D')"><span class="ol">D</span>Only matters after 2 PM</div></div><div class="qexp" id="qe11-2">✅ Above VWAP = institutions are net buyers. Lean toward long setups.</div></div>
