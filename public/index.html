@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GreenSniperX — Snipe Smarter. Trade Sharper.</title>
-  <meta name="description" content="A free trading education hub for day and swing traders — a learner library, free risk and position-size tools, courses and books, and a live community."/>
+  <meta name="description" content="Trading education for people who are serious about learning it right — courses, tools, and a live community for day traders, swing traders, crypto, and futures."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -12,23 +12,12 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --green:#059669;
-      --green-hover:#047857;
-      --green-pale:#ecfdf5;
-      --green-border:#a7f3d0;
-      --gold:#b45309;
-      --gold-pale:#fffbeb;
-      --gold-border:#fde68a;
-      --text:#111827;
-      --text2:#374151;
-      --muted:#6b7280;
-      --muted2:#9ca3af;
-      --border:#e5e7eb;
-      --border2:#d1d5db;
-      --surface:#f9fafb;
-      --surface2:#f3f4f6;
-      --dark:#0f172a;
-      --dark2:#1e293b;
+      --green:#059669;--green-hover:#047857;--green-pale:#ecfdf5;
+      --green-border:#a7f3d0;--gold:#b45309;--gold-pale:#fffbeb;
+      --gold-border:#fde68a;--text:#111827;--text2:#374151;
+      --muted:#6b7280;--muted2:#9ca3af;--border:#e5e7eb;
+      --border2:#d1d5db;--surface:#f9fafb;--surface2:#f3f4f6;
+      --dark:#0f172a;--dark2:#1e293b;
     }
     html{scroll-behavior:smooth}
     body{background:#fff;color:var(--text);font-family:'Inter',sans-serif;font-size:17px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -42,9 +31,16 @@
     .btn-primary:hover{background:var(--green-hover);transform:translateY(-1px);box-shadow:0 4px 14px rgba(5,150,105,0.35)}
     .btn-outline{background:transparent;color:var(--green);border:1.5px solid var(--green-border)}
     .btn-outline:hover{background:var(--green-pale)}
+    .btn-dark{background:var(--dark);color:#fff}
+    .btn-dark:hover{background:var(--dark2);transform:translateY(-1px)}
+/* FEATURED SHOP CARD */
+    .shop-card-featured{border-color:var(--green);border-width:2px;position:relative;overflow:hidden}
+    .shop-card-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),#34d399)}
+    .shop-badge{display:inline-block;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;background:var(--green-pale);color:var(--green);border:1px solid var(--green-border);padding:0.2rem 0.65rem;border-radius:20px;margin-bottom:0.5rem}
 
     /* NAV */
-    nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(255,255,255,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(16px)}
+    /* NAV */
+    nav{position:sticky;top:0;z-index:299;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(255,255,255,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(16px)}
     .logo{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-0.5px;text-decoration:none}
     .logo span{color:var(--green)}
     .nav-links{display:flex;gap:2rem}
@@ -76,12 +72,27 @@
     .td{width:3px;height:3px;border-radius:50%;background:var(--border2);flex-shrink:0}
 
     /* SHARED SECTION */
-    .sec-eyebrow{display:inline-block;font-size:0.78rem;font-weight:600;color:var(--green);letter-spacing:0.3px;margin-bottom:0.65rem}
+    .sec-eyebrow{display:inline-block;font-size:0.78rem;font-weight:600;color:var(--green);letter-spacing:0.3px;margin-bottom:0.65rem;text-transform:uppercase}
     .sec-title{font-family:'Manrope',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;line-height:1.15;color:var(--text);margin-bottom:0.6rem;letter-spacing:-0.5px}
     .sec-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.75}
     .sec-head{text-align:center;margin-bottom:3.5rem}
     .sec-head .sec-sub{margin:0 auto}
     section{padding:6rem 2rem}
+
+    /* HOOK — 3 things */
+    .hook-section{background:var(--dark);padding:5rem 2rem}
+    .hook-inner{max-width:1000px;margin:0 auto}
+    .hook-eyebrow{display:inline-block;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;color:#34d399;margin-bottom:0.65rem}
+    .hook-title{font-family:'Manrope',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-0.5px;margin-bottom:0.65rem;max-width:640px}
+    .hook-sub{font-size:0.97rem;color:rgba(255,255,255,0.5);max-width:540px;line-height:1.75;margin-bottom:3rem}
+    .hook-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem}
+    .hook-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem}
+    .hook-card:hover{border-color:rgba(52,211,153,0.25);background:rgba(5,150,105,0.07);transition:all 0.2s}
+    .hook-num{font-family:'Manrope',sans-serif;font-size:0.72rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:0.85rem}
+    .hook-card-title{font-family:'Manrope',sans-serif;font-size:1.05rem;font-weight:800;color:#fff;line-height:1.3;margin-bottom:0.6rem;letter-spacing:-0.2px}
+    .hook-card-body{font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.75}
+    .hook-card-reveal{font-size:0.8rem;font-weight:600;color:#34d399;margin-top:1rem;display:inline-flex;align-items:center;gap:4px}
+    .hook-cta{display:flex;gap:0.85rem;flex-wrap:wrap}
 
     /* RADAR */
     .radar-section{background:var(--surface)}
@@ -104,10 +115,21 @@
     .learn-desc{font-size:0.88rem;color:var(--muted);line-height:1.7}
     .learn-cta{display:flex;gap:0.85rem;justify-content:center;flex-wrap:wrap}
 
+    /* PATH SELECTOR */
+    .path-section{background:var(--surface);padding:5rem 2rem}
+    .path-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:1000px;margin:0 auto}
+    .path-card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:1.5rem;text-decoration:none;color:inherit;transition:all 0.18s;display:flex;flex-direction:column;gap:0.5rem}
+    .path-card:hover{border-color:var(--green-border);transform:translateY(-2px);box-shadow:0 8px 24px rgba(5,150,105,0.08)}
+    .path-label{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--green)}
+    .path-question{font-family:'Manrope',sans-serif;font-size:1.05rem;font-weight:800;line-height:1.3;letter-spacing:-0.2px;margin-bottom:0.1rem}
+    .path-course{font-size:0.88rem;font-weight:600;color:var(--text2)}
+    .path-price{font-size:0.82rem;color:var(--muted)}
+    .path-arrow{font-size:0.82rem;font-weight:700;color:var(--green);margin-top:auto;padding-top:0.75rem;display:flex;align-items:center;gap:4px}
+
     /* LIBRARY */
-    .lib-section{background:var(--surface)}
+    .lib-section{background:#fff}
     .lib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1000px;margin:0 auto 2rem}
-    .lib-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.4rem;display:block;text-decoration:none;color:inherit;transition:border-color 0.18s,transform 0.18s}
+    .lib-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;display:block;text-decoration:none;color:inherit;transition:border-color 0.18s,transform 0.18s}
     .lib-card:hover{border-color:var(--green-border);transform:translateY(-2px)}
     .lib-card i{font-size:20px;color:var(--green);margin-bottom:0.75rem;display:block}
     .lib-tag{font-size:0.7rem;font-weight:700;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.4rem}
@@ -117,9 +139,10 @@
     .lib-more{text-align:center}
 
     /* SHOP */
-    .shop-section{background:#fff}
+    .shop-section{background:var(--surface)}
     .shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;max-width:1000px;margin:0 auto}
     .shop-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column}
+    .shop-card:hover{border-color:var(--green-border);box-shadow:0 8px 24px rgba(5,150,105,0.07);transition:all 0.18s}
     .shop-type{font-size:0.7rem;font-weight:700;color:var(--gold);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.5rem}
     .shop-title{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:0.4rem;letter-spacing:-0.3px}
     .shop-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;flex:1}
@@ -164,7 +187,8 @@
     @media(max-width:900px){
       nav{padding:0.85rem 1.25rem}.nav-links{display:none}
       section{padding:4rem 1.25rem}
-      .radar-grid,.learn-grid,.lib-grid,.shop-grid{grid-template-columns:1fr}
+      .hook-section,.path-section{padding:4rem 1.25rem}
+      .hook-grid,.radar-grid,.learn-grid,.lib-grid,.shop-grid,.path-grid{grid-template-columns:1fr}
       .nl-form{flex-direction:column}
       footer{flex-direction:column;padding:1.5rem}
     }
@@ -176,12 +200,12 @@
 <nav>
   <a class="logo" href="#">Green<span>SniperX</span></a>
   <div class="nav-links">
-    <a href="#library">Learner Library</a>
+    <a href="#library">Course Library</a>
     <a href="tools.html">Tools</a>
     <a href="#shop">Shop</a>
     <a href="#community">Community</a>
   </div>
-  <a class="btn btn-sm btn-primary" href="#newsletter">Join free</a>
+  <a class="btn btn-sm btn-primary" href="#community">Join the Community</a>
 </nav>
 
 <!-- TICKER -->
@@ -209,129 +233,316 @@
     <circle cx="250" cy="250" r="3" fill="rgba(5,150,105,0.3)"/>
   </svg>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Trading education · Tools · Community</div>
+    <div class="hero-eyebrow">The trading education most people never find</div>
     <h1>Snipe smarter.<br><span class="g">Trade sharper.</span></h1>
-    <p class="hero-sub">GreenSniperX is a free home base for day and swing traders — a growing library of guides, tools that do the math before you click buy, and a live community to talk it through with.</p>
-    <p class="hero-desc">No hype, no guaranteed returns. Just the process: what we're watching and why, how risk gets managed around it, and a place to talk it through with people doing the same thing. New here? The Learner Library is the best place to start.</p>
+    <p class="hero-sub">Most people enter the markets guessing. GreenSniperX teaches the process — from reading your first chart to understanding exactly why the market moves the way it does.</p>
+    <p class="hero-desc">3 courses. 1 ebook. 1 playbook. Stocks, crypto, futures, forex, and options — every market covered with the same framework, built from zero.</p>
     <div class="hero-cta">
-      <a class="btn btn-lg btn-primary" href="#newsletter">Join free</a>
-      <a class="btn btn-lg btn-outline" href="#library">Browse the library</a>
+      <a class="btn btn-lg btn-primary" href="#path">Find your course →</a>
     </div>
     <div class="hero-trust">
-      <span>Free to join</span>
+      <span>No experience needed</span>
       <span class="td"></span>
-      <span>No experience required</span>
+      <span>Real strategies, not hype</span>
       <span class="td"></span>
-      <span>Educational content — not financial advice</span>
+      <span>Educational content only</span>
     </div>
   </div>
 </section>
 
-<!-- ON THE RADAR -->
+<!-- 3 THINGS HOOK -->
+<div class="hook-section">
+  <div class="hook-inner">
+    <div class="hook-eyebrow">What changes everything</div>
+    <h2 class="hook-title">Three things most traders are never taught</h2>
+    <p class="hook-sub">These aren't tips. They're the framework. Get these right and everything else — the setups, the indicators, the timing — starts to make sense.</p>
+    <div class="hook-grid">
+      <div class="hook-card">
+        <div class="hook-num">01 — Location</div>
+        <div class="hook-card-title">Where you enter matters more than the pattern</div>
+        <p class="hook-card-body">Buying the same pattern at the top of a range versus the bottom gives you completely different odds. Most beginners are taught to spot patterns. They're never taught where to look for them. We call this premium versus discount — and it's in the very first chapter.</p>
+        <span class="hook-card-reveal">Covered in every course →</span>
+      </div>
+      <div class="hook-card">
+        <div class="hook-num">02 — Protection</div>
+        <div class="hook-card-title">Your stop loss comes before your entry. Always.</div>
+        <p class="hook-card-body">If you can't name the price where you're wrong before you click buy, you don't have a trade — you have a guess. Knowing your exit before your entry isn't optional. It's the single habit that separates traders who last from traders who don't.</p>
+        <span class="hook-card-reveal">The 4-step entry rule is in every course →</span>
+      </div>
+      <div class="hook-card">
+        <div class="hook-num">03 — Sizing</div>
+        <div class="hook-card-title">One bad day shouldn't end your account</div>
+        <p class="hook-card-body">Position sizing isn't about how much you want to make — it's about how much you can lose and still be in the game tomorrow. The math behind it takes five minutes to learn and could be the most valuable five minutes you spend this year.</p>
+        <span class="hook-card-reveal">The 2% rule and sizing formula inside →</span>
+      </div>
+    </div>
+    <div class="hook-cta">
+      <a class="btn btn-lg btn-primary" href="#path">See the courses</a>
+      <a class="btn btn-lg" style="background:rgba(255,255,255,0.08);color:#fff;border-radius:10px;padding:0.85rem 1.75rem;font-size:1rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px" href="#library">Browse the free library</a>
+    </div>
+  </div>
+</div>
+
+<!-- WHY NOW -->
+<section style="background:var(--dark);padding:6rem 2rem;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(5,150,105,0.10) 0%,transparent 65%);pointer-events:none;z-index:0;"></div>
+  <div style="max-width:1000px;margin:0 auto;position:relative;z-index:2;">
+
+    <div style="text-align:center;margin-bottom:3.5rem;">
+      <div style="display:inline-block;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;color:#34d399;margin-bottom:0.65rem;">You didn't miss it. You're right on time.</div>
+      <h2 style="font-family:'Manrope',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-0.5px;margin-bottom:0.85rem;">It is not too late.<br>Start today.</h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.5);max-width:560px;margin:0 auto;line-height:1.8;">Every person building real wealth right now started somewhere. Most wish they had started sooner. You are here now — that already puts you ahead of everyone still waiting for the right time.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:3rem;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:0.85rem;"><span style="font-family:'Manrope',sans-serif;font-size:0.7rem;font-weight:800;color:#34d399;letter-spacing:0.3px;text-transform:uppercase;">01</span></div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;color:#fff;font-size:1rem;margin-bottom:0.5rem;line-height:1.3;">Markets are more accessible than ever before</div>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.75;margin:0;">Commission-free trading, fractional shares starting at $1, and mobile platforms that let you trade stocks, crypto, and futures from your phone. The barriers that kept everyday people out of the markets for decades are gone. What remains is the education.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:0.85rem;"><span style="font-family:'Manrope',sans-serif;font-size:0.7rem;font-weight:800;color:#34d399;letter-spacing:0.3px;text-transform:uppercase;">02</span></div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;color:#fff;font-size:1rem;margin-bottom:0.5rem;line-height:1.3;">New opportunities are being created right now</div>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.75;margin:0;">SpaceX just had the largest IPO in history. Bitcoin trades 24 hours a day. AI companies are going public. Futures markets let you trade oil, gold, and the entire S&amp;P 500 from one account. The number of real, tradeable opportunities has never been higher — and most people have no idea how to access them.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:0.85rem;"><span style="font-family:'Manrope',sans-serif;font-size:0.7rem;font-weight:800;color:#34d399;letter-spacing:0.3px;text-transform:uppercase;">03</span></div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;color:#fff;font-size:1rem;margin-bottom:0.5rem;line-height:1.3;">The cost of waiting is higher than the cost of learning</div>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.75;margin:0;">Every year you put off learning how markets work is a year of compounding you do not get back. Someone who starts at 25 and someone who starts at 45 both have decades of market cycles ahead. The best time to start was ten years ago. The second best time is right now.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:0.85rem;"><span style="font-family:'Manrope',sans-serif;font-size:0.7rem;font-weight:800;color:#34d399;letter-spacing:0.3px;text-transform:uppercase;">04</span></div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;color:#fff;font-size:1rem;margin-bottom:0.5rem;line-height:1.3;">You do not need to be rich to start</div>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.75;margin:0;">$100 is enough to start building real pattern recognition, emotional control, and a real edge. The size of your account on day one is not the point. The process you build is everything. Professional traders did not start with large accounts. They started with a method and scaled it as it proved itself.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:0.85rem;"><span style="font-family:'Manrope',sans-serif;font-size:0.7rem;font-weight:800;color:#34d399;letter-spacing:0.3px;text-transform:uppercase;">05</span></div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;color:#fff;font-size:1rem;margin-bottom:0.5rem;line-height:1.3;">The market has always recovered — and always gone higher</div>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.75;margin:0;">Every crash in history — 2008, 2020, 2022 — was followed by recovery and new all-time highs. Traders who understood how markets move made money in both directions. Knowing the process, not just the direction, is the difference between a trader and someone who just watches the news and worries.</p>
+      </div>
+      <div style="background:rgba(5,150,105,0.10);border:1px solid rgba(52,211,153,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:0.85rem;"><span style="font-family:'Manrope',sans-serif;font-size:0.7rem;font-weight:800;color:#34d399;letter-spacing:0.3px;text-transform:uppercase;">06</span></div>
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;color:#fff;font-size:1rem;margin-bottom:0.5rem;line-height:1.3;">The only thing separating you from a trader is the knowledge</div>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.75;margin:0;">The traders making consistent money are not smarter than you. They are not luckier. They learned a framework, applied it consistently, and managed risk while refining it. That framework is what GreenSniperX teaches. The gap between where you are and where you want to be is smaller than you think.</p>
+        <a href="#shop" style="font-size:0.82rem;font-weight:700;color:#34d399;margin-top:1rem;display:inline-flex;align-items:center;gap:4px;text-decoration:none;">Start closing that gap &#8594;</a>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:2rem;text-align:center;">
+      <p style="font-family:'Manrope',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;line-height:1.5;max-width:620px;margin:0 auto 1.5rem;">"The market does not care when you start. It rewards how prepared you are when the opportunity shows up."</p>
+      <div style="display:flex;gap:0.85rem;justify-content:center;flex-wrap:wrap;">
+        <a class="btn btn-lg btn-primary" href="#path">Find your course</a>
+        <a class="btn btn-lg" style="background:rgba(255,255,255,0.08);color:#fff;border-radius:10px;padding:0.85rem 1.75rem;font-size:1rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;" href="#community">Join the community</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT TRADERS ARE WATCHING -->
 <section class="radar-section" id="radar">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-eyebrow">This week</div>
-      <h2 class="sec-title">On the radar</h2>
-      <p class="sec-sub">A small sample of what we're tracking this week across stocks, options, and crypto — just four of dozens of names on our radar. Educational examples of how we think through setups, not recommendations.</p>
+      <div class="sec-eyebrow">What we're watching</div>
+      <h2 class="sec-title">The market, explained</h2>
+      <p class="sec-sub">Four names every trader should understand — what they are, why they matter, and how they show up in the courses.</p>
     </div>
-    <div class="radar-grid radar-grid-4">
+
+    <div class="radar-grid radar-grid-4" style="max-width:1000px;margin:0 auto;">
       <div class="radar-card">
         <div class="radar-sym">SPY</div>
         <div class="radar-tag">Index · Market gauge</div>
-        <p class="radar-note">SPY tracks the S&amp;P 500 — essentially the 500 largest U.S. companies bundled into one symbol. When you hear "the market" moved today, this is usually what people mean, and it's our first check before looking at anything else.</p>
+        <p class="radar-note">SPY tracks the S&amp;P 500 — 500 of the largest U.S. companies bundled into one symbol. When you hear "the market moved today," this is what people mean. It's the first thing every trader checks before looking at anything else. If SPY is weak, most stocks are weak. If SPY is ripping, everything tends to follow. Learning to read SPY gives you the pulse of the entire market before you even pick a name to trade.</p>
       </div>
       <div class="radar-card">
         <div class="radar-sym">QQQ</div>
         <div class="radar-tag">Index · Tech</div>
-        <p class="radar-note">QQQ tracks the Nasdaq-100 — a tech-heavy basket that includes names like Apple, Microsoft, and Nvidia. When tech is leading or lagging the rest of the market, QQQ is usually where it shows up first.</p>
+        <p class="radar-note">QQQ tracks the Nasdaq-100 — a tech-heavy basket including Apple, Microsoft, Nvidia, and the companies driving most of the market's biggest moves. When tech is leading, QQQ is where it shows up first. Day traders watch QQQ alongside SPY because when they diverge — one going up while the other stalls — it signals where the real momentum is. The Crash Course covers exactly how to use this relationship to time entries.</p>
       </div>
       <div class="radar-card">
         <div class="radar-sym">NVDA</div>
         <div class="radar-tag">Stock · Day trade</div>
-        <p class="radar-note">NVDA is one of the most actively traded individual stocks — high volume and big daily ranges make it a favorite for practicing entries and exits on a single name. We'll walk through how we'd approach a stock like this, live, in the community.</p>
+        <p class="radar-note">NVDA is one of the most actively traded individual stocks in the market — massive daily volume, big ranges, and clean technical levels. It's a name where the setups taught in the course show up over and over: VWAP reclaims, premium and discount zones, liquidity runs before reversals. If you learn to read one individual stock well, NVDA is one of the best teachers. It doesn't forgive sloppy entries, which means it forces you to get the process right.</p>
       </div>
       <div class="radar-card">
         <div class="radar-sym">BTC</div>
-        <div class="radar-tag">Crypto · Day &amp; Swing</div>
-        <p class="radar-note">Bitcoin trades very differently from stocks — there's no open or close, and price can move at any hour. Our Crypto Day &amp; Swing Trading Crash Course covers exactly how to read and trade markets like this, including leverage and risk management built for crypto's volatility.</p>
-        <a href="#shop" class="lib-link">Get the Crypto Crash Course →</a>
+        <div class="radar-tag">Crypto · 24/7</div>
+        <p class="radar-note">Bitcoin trades every hour of every day — no open, no close, no premarket gaps. It moves on macro news, on-chain data, funding rates, and sentiment in ways stocks don't. That makes it both more volatile and more accessible than any stock. Our Crypto Course covers exactly how to read and trade a 24/7 market including leverage, liquidation risk, and the unique structure of perpetual contracts. BTC is where most crypto traders start — and the course meets you there.</p>
+        <a href="#shop" class="lib-link">Get the Crypto Course →</a>
       </div>
     </div>
-    <div class="radar-cta">
+
+    <div class="radar-cta" style="max-width:1000px;margin:2rem auto 0;">
       <div>
-        <div class="radar-cta-title">This is just a sample</div>
-        <p class="radar-cta-desc">We're tracking dozens of names across stocks, options, and crypto every week — SPY, QQQ, NVDA, and BTC are just four of them. The full watchlist and live discussion happen in the community.</p>
+        <div class="radar-cta-title">This is just a sample of what the courses cover</div>
+        <p class="radar-cta-desc">Every name above is broken down in depth — setups, levels, and how to actually trade them — inside the Day &amp; Swing and Crypto courses.</p>
       </div>
-      <a class="btn btn-lg btn-primary" href="#community">See it live</a>
+      <a class="btn btn-lg btn-primary" href="#shop">Get the course</a>
     </div>
+
+    <!-- LATEST NEWS -->
+    <div style="max-width:1000px;margin:2rem auto 0;">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-dot 1.8s infinite;flex-shrink:0;"></div>
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;color:var(--green);">Latest News — Updated as the market moves</div>
+      </div>
+      <div class="radar-card" style="border-left:3px solid var(--green);">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.65rem;flex-wrap:wrap;">
+          <div class="radar-sym">SPCX</div>
+          <div class="radar-tag">Stock · IPO · Day trade</div>
+          <div style="font-size:0.72rem;font-weight:700;color:var(--gold);background:var(--gold-pale);border:1px solid var(--gold-border);padding:0.2rem 0.65rem;border-radius:20px;">Largest IPO in history — June 2026</div>
+        </div>
+        <p class="radar-note" style="margin-bottom:0.75rem;">SpaceX just went public on Nasdaq under the ticker <strong>SPCX</strong> — the largest initial public offering in market history. For day traders, a brand-new high-profile IPO like this is one of the most important setups to understand: extreme volume on day one, massive price swings as the market finds fair value, and institutional buyers establishing positions in real time. The same principles taught in the Crash Course — premium vs. discount zones, VWAP as a magnet, volume spikes signaling direction — apply directly to a name like this.</p>
+        <p class="radar-note" style="margin-bottom:0.85rem;">New IPOs don't have years of historical support and resistance to reference. The market builds those levels live. Knowing how to read price action and volume in that environment is exactly what separates prepared traders from everyone else chasing the hype.</p>
+        <a href="#shop" class="lib-link">How to trade new IPOs — Day &amp; Swing Course →</a>
+      </div>
+    </div>
+
   </div>
 </section>
+
 
 <!-- WHAT YOU'LL LEARN -->
 <section class="learn-section" id="learn">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">New here?</div>
-      <h2 class="sec-title">Here's what GreenSniperX teaches</h2>
-      <p class="sec-sub">If you've never placed a trade, start here. This is the ground we cover — step by step, in plain English, with no experience assumed.</p>
+      <h2 class="sec-title">Start with the foundation</h2>
+      <p class="sec-sub">Every market, every setup, every concept — built from zero. No fluff, no noise. Just the method that actually produces results.</p>
     </div>
     <div class="learn-grid">
       <div class="learn-card">
         <i class="ti ti-device-laptop" aria-hidden="true"></i>
-        <div class="learn-title">Setting up your platform</div>
-        <p class="learn-desc">How to set up a broker account and a charting platform, step by step — so you're looking at the right thing before anything else.</p>
+        <div class="learn-title">Platform setup, done right</div>
+        <p class="learn-desc">How to set up a broker account and charting platform step by step — so you're looking at the right thing before you ever place a trade.</p>
       </div>
       <div class="learn-card">
         <i class="ti ti-chart-candle" aria-hidden="true"></i>
         <div class="learn-title">Reading a chart</div>
-        <p class="learn-desc">What candlesticks are, what the shapes tend to mean, and how to read price action without feeling overwhelmed.</p>
+        <p class="learn-desc">What candlesticks are, what the shapes mean, and how to read price action without feeling overwhelmed — covered before anything else.</p>
       </div>
       <div class="learn-card">
         <i class="ti ti-ruler-2" aria-hidden="true"></i>
         <div class="learn-title">Support, resistance &amp; volume</div>
-        <p class="learn-desc">The handful of levels and signals that matter most — and how to spot them on any chart.</p>
+        <p class="learn-desc">The levels and signals that matter most — and how to spot them on any chart, in any market, on any timeframe.</p>
       </div>
       <div class="learn-card">
         <i class="ti ti-activity" aria-hidden="true"></i>
-        <div class="learn-title">Key indicators</div>
-        <p class="learn-desc">A plain-English walkthrough of the few indicators worth knowing — what they show, and what they don't.</p>
+        <div class="learn-title">The indicators worth knowing</div>
+        <p class="learn-desc">Most traders use too many indicators. We cover the few that actually add context — what they show, what they don't, and how to use them without second-guessing.</p>
       </div>
       <div class="learn-card">
         <i class="ti ti-bolt" aria-hidden="true"></i>
         <div class="learn-title">Day trading vs. swing trading</div>
-        <p class="learn-desc">Two different styles, two different paces. We break down what each looks like in practice so you can see which one fits you.</p>
+        <p class="learn-desc">Two different paces. Two different mindsets. We break down exactly what each looks like in practice — so you can choose the one that fits your life.</p>
       </div>
       <div class="learn-card">
         <i class="ti ti-shield-check" aria-hidden="true"></i>
-        <div class="learn-title">Risk management</div>
-        <p class="learn-desc">The single most important habit in trading — how much to risk, when to walk away, and why it matters more than being "right."</p>
+        <div class="learn-title">Risk management — non-negotiable</div>
+        <p class="learn-desc">The 2% rule, daily loss limits, position sizing, and when to walk away. The most important chapter in every course — taught before the setups.</p>
       </div>
     </div>
     <div class="learn-cta">
       <a class="btn btn-lg btn-outline" href="#library">Browse free guides</a>
-      <a class="btn btn-lg btn-primary" href="#shop">See the full Crash Course</a>
+      <a class="btn btn-lg btn-primary" href="#shop">Get the full course</a>
     </div>
   </div>
 </section>
 
-<!-- LEARNER LIBRARY -->
+<!-- WHICH COURSE? PATH SELECTOR -->
+<div class="path-section" id="path">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Find your path</div>
+      <h2 class="sec-title">Which course is right for you?</h2>
+      <p class="sec-sub">3 courses, 1 ebook, and 1 playbook — built to take you from zero to a real trading process. Pick the one that matches where you're starting.</p>
+    </div>
+    <div class="path-grid">
+      <a class="path-card" href="#shop">
+        <div class="path-label">Start here</div>
+        <div class="path-question">I'm completely new — I don't even know what a candlestick is.</div>
+        <div class="path-course">The $100 Start + Day &amp; Swing Trading Course</div>
+        <div class="path-price">From $29.99</div>
+        <span class="path-arrow">This is your starting point →</span>
+      </a>
+      <a class="path-card" href="#shop">
+        <div class="path-label">Crypto</div>
+        <div class="path-question">I want to trade Bitcoin, Ethereum, and altcoins — 24 hours a day.</div>
+        <div class="path-course">Crypto Day &amp; Swing Trading Course</div>
+        <div class="path-price">$39.99</div>
+        <span class="path-arrow">Built for crypto's volatility →</span>
+      </a>
+      <a class="path-card" href="#shop">
+        <div class="path-label">Futures &amp; Forex</div>
+        <div class="path-question">I want to trade NQ, ES, gold, oil, or the major currency pairs.</div>
+        <div class="path-course">Futures &amp; Forex Crash Course</div>
+        <div class="path-price">$39.99</div>
+        <span class="path-arrow">Get the full futures framework →</span>
+      </a>
+      <a class="path-card" href="#shop">
+        <div class="path-label">Advanced</div>
+        <div class="path-question">I want to make money when the market is crashing, not just watching it fall.</div>
+        <div class="path-course">The Crash Playbook</div>
+        <div class="path-price">$29.99 · Recommended after the crash course</div>
+        <span class="path-arrow">One method. Proven in every major crash →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CRASH COURSE LIBRARY -->
 <section class="lib-section" id="library">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-eyebrow">Learner library</div>
+      <div class="sec-eyebrow">Crash Course Library</div>
       <h2 class="sec-title">Start here</h2>
-      <p class="sec-sub">Plain-English explainers and strategy guides — for people just getting started, and people leveling up.</p>
+      <p class="sec-sub">Concept breakdowns and strategy guides — topics every trader needs to understand, teased here and covered in full inside the courses.</p>
     </div>
     <div class="lib-grid">
-      <a class="lib-card" href="#shop"><i class="ti ti-shield" aria-hidden="true"></i><div class="lib-tag">Glossary</div><div class="lib-title">Stop-loss orders</div><p class="lib-desc">What a stop-loss is, and why "no stop" isn't a strategy.</p><span class="lib-link">Covered in the Crash Course →</span></a>
-      <a class="lib-card" href="#shop"><i class="ti ti-scale" aria-hidden="true"></i><div class="lib-tag">Glossary</div><div class="lib-title">Risk-reward ratio</div><p class="lib-desc">How to think about what you're risking versus what you stand to gain.</p><span class="lib-link">Covered in the Crash Course →</span></a>
-      <a class="lib-card" href="#shop"><i class="ti ti-chart-candle" aria-hidden="true"></i><div class="lib-tag">Guide</div><div class="lib-title">Reading candlestick charts</div><p class="lib-desc">The basic shapes, and what they tend to mean in context.</p><span class="lib-link">Covered in the Crash Course →</span></a>
-      <a class="lib-card" href="#shop"><i class="ti ti-chart-line" aria-hidden="true"></i><div class="lib-tag">Glossary</div><div class="lib-title">What is VWAP?</div><p class="lib-desc">What the volume-weighted average price is and how traders use it.</p><span class="lib-link">Covered in the Crash Course →</span></a>
-      <a class="lib-card" href="#shop"><i class="ti ti-stack-2" aria-hidden="true"></i><div class="lib-tag">Guide</div><div class="lib-title">Position sizing 101</div><p class="lib-desc">Why how much you trade matters more than what you trade.</p><span class="lib-link">Covered in the Crash Course →</span></a>
-      <a class="lib-card" href="#shop"><i class="ti ti-trending-up" aria-hidden="true"></i><div class="lib-tag">Guide</div><div class="lib-title">Intro to swing trading</div><p class="lib-desc">Holding periods, chart timeframes, and what to expect.</p><span class="lib-link">Covered in the Crash Course →</span></a>
+      <a class="lib-card" href="#shop">
+        <i class="ti ti-shield" aria-hidden="true"></i>
+        <div class="lib-tag">Glossary</div>
+        <div class="lib-title">Stop-loss orders — and why "no stop" isn't a strategy</div>
+        <p class="lib-desc">A stop-loss is an order that automatically exits your trade if price moves against you to a set level — cutting the loss before it becomes account-damaging. Most beginners skip it, thinking the trade will "come back." It often doesn't. The right place for a stop isn't a random percentage — it goes just below the level that made you take the trade. If that level breaks, your reason to be in is gone. Getting out there isn't losing. It's trading correctly.</p>
+        <span class="lib-link">Full entry rules + stop placement in the Crash Course →</span>
+      </a>
+      <a class="lib-card" href="#shop">
+        <i class="ti ti-scale" aria-hidden="true"></i>
+        <div class="lib-tag">Glossary</div>
+        <div class="lib-title">Risk-reward ratio — the number that decides everything</div>
+        <p class="lib-desc">Your risk-reward ratio compares what you stand to lose versus what you could gain on a single trade. A 2:1 ratio means risking $50 to potentially make $100. Here's what most beginners never learn: even if you're only right 40% of the time, a consistent 2:1 ratio still makes you money over 100 trades. You don't need to be right most of the time — you need your winners to be bigger than your losers. That math is what keeps professionals in the game for years.</p>
+        <span class="lib-link">Full breakdown + real examples in the Crash Course →</span>
+      </a>
+      <a class="lib-card" href="#shop">
+        <i class="ti ti-chart-candle" aria-hidden="true"></i>
+        <div class="lib-tag">Guide</div>
+        <div class="lib-title">How to read a candlestick chart in under 60 seconds</div>
+        <p class="lib-desc">Each candlestick shows four things: where price opened, where it closed, the highest it reached, and the lowest. A green candle means buyers won that period — price closed higher than it opened. Red means sellers won. The wicks above and below show where price was rejected. A long lower wick means sellers pushed price down hard, but buyers stepped back in and drove it up before the candle closed. That rejection tells you who is in control — and that's the whole game.</p>
+        <span class="lib-link">Every pattern + what it means in the Crash Course →</span>
+      </a>
+      <a class="lib-card" href="#shop">
+        <i class="ti ti-chart-line" aria-hidden="true"></i>
+        <div class="lib-tag">Glossary</div>
+        <div class="lib-title">VWAP — what it is and why traders treat it like a magnet</div>
+        <p class="lib-desc">VWAP is the average price of a stock weighted by how many shares traded at each level throughout the day — it resets every morning. Institutional buyers use it as their benchmark: buy below VWAP, sell above it. That makes VWAP one of the most reliable intraday support and resistance levels on any chart. Price above VWAP means buyers are in control. Below it, sellers are. Watching how price reacts when it crosses VWAP is one of the first skills every day trader needs to build.</p>
+        <span class="lib-link">How to trade with VWAP — in the Crash Course →</span>
+      </a>
+      <a class="lib-card" href="#shop">
+        <i class="ti ti-stack-2" aria-hidden="true"></i>
+        <div class="lib-tag">Guide</div>
+        <div class="lib-title">Position sizing — why this matters more than which stock you pick</div>
+        <p class="lib-desc">Position sizing is how many shares, contracts, or coins you buy on each trade. Most beginners choose based on how confident they feel — which is how accounts blow up. The formula is simple: Risk Amount ÷ (Entry Price − Stop Price) = Position Size. Example: $20 risk, entry at $50, stop at $49 — that's 20 shares. Every trade, same math, regardless of how good the setup looks. Confidence doesn't change risk. The formula does.</p>
+        <span class="lib-link">The full sizing formula + 2% rule in the Crash Course →</span>
+      </a>
+      <a class="lib-card" href="#shop">
+        <i class="ti ti-trending-up" aria-hidden="true"></i>
+        <div class="lib-tag">Guide</div>
+        <div class="lib-title">Swing trading — the slower game with the bigger picture</div>
+        <p class="lib-desc">Swing trading means holding positions for days to weeks instead of minutes to hours — looking for larger moves on daily or weekly charts instead of watching every tick on a 5-minute screen. The advantage: you don't need to watch the market all day. The trade-off: wider stops and patience while the trade develops. A swing trader might risk 2-3% targeting 6-8% on a move that plays out over several sessions — a better fit for anyone with a job, school, or a life that makes constant screen time impossible.</p>
+        <span class="lib-link">Day vs. swing — full comparison in the Crash Course →</span>
+      </a>
     </div>
-    <div class="lib-more"><a class="btn btn-lg btn-outline" href="#shop">See the full course</a></div>
+    <div class="lib-more"><a class="btn btn-lg btn-primary" href="#shop">See all courses →</a></div>
   </div>
 </section>
 
@@ -340,51 +551,52 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">Shop</div>
-      <h2 class="sec-title">Courses &amp; books</h2>
-      <p class="sec-sub">Go deeper at your own pace. Everything links out to secure checkout.</p>
+      <h2 class="sec-title">Courses &amp; guides</h2>
+      <p class="sec-sub">Every product is self-contained, interactive, and designed to be finished — not shelved. Pick where you're starting and go.</p>
     </div>
     <div class="shop-grid">
       <div class="shop-card">
+        <div class="shop-type">Ebook · Start Here</div>
+        <div class="shop-title">The $100 Start</div>
+        <p class="shop-desc">How to put $100 to work across stocks, crypto, futures, and forex — day trading, swing trading, compounding, and the full framework for growing a small account from nothing. The recommended first read for every beginner.</p>
+        <div class="shop-price">$29.99</div>
+        <a class="btn btn-lg btn-primary" href="https://payhip.com/b/evYJL" style="width:100%;justify-content:center">Get the ebook</a>
+      </div>
+      <div class="shop-card shop-card-featured">
+        <div class="shop-badge">⭐ Foundation Course — Start Here</div>
         <div class="shop-type">Course</div>
         <div class="shop-title">Day &amp; Swing Trading Crash Course</div>
-        <p class="shop-desc">An interactive course covering platform setup, chart reading, indicators, day and swing trading strategies, and risk management — with quizzes and a trading simulator built in.</p>
+        <p class="shop-desc">Platform setup, chart reading, candlestick patterns, support and resistance, indicators, risk management, entry rules, and trade management — interactive, with quizzes and a built-in trading simulator. The foundation course for every market.</p>
         <div class="shop-price">$39.99</div>
         <a class="btn btn-lg btn-primary" href="https://payhip.com/b/f2wAy" style="width:100%;justify-content:center">Get the course</a>
       </div>
       <div class="shop-card">
         <div class="shop-type">Course</div>
-        <div class="shop-title">Crypto Day &amp; Swing Trading Crash Course</div>
-        <p class="shop-desc">An interactive course covering exchange &amp; wallet security, chart reading, indicators, leverage &amp; liquidation, day and swing trading strategies, and risk management for a market that never closes — with quizzes and a trading simulator built in.</p>
+        <div class="shop-title">Crypto Day &amp; Swing Trading Course</div>
+        <p class="shop-desc">Exchange and wallet security, chart reading, perpetual contracts, leverage and liquidation, funding rates, day and swing strategies — all built for a market that never closes. Includes the 4-step entry framework and full risk management.</p>
         <div class="shop-price">$39.99</div>
         <a class="btn btn-lg btn-primary" href="https://payhip.com/b/1pmfG" style="width:100%;justify-content:center">Get the course</a>
       </div>
       <div class="shop-card">
         <div class="shop-type">Course</div>
         <div class="shop-title">Futures &amp; Forex Crash Course</div>
-        <p class="shop-desc">An interactive course covering platforms, leverage &amp; margin, sessions &amp; pre-market gaps, chart reading, futures and forex strategies, entries, exits, risk management, and the economic calendar — with quizzes and a trading simulator built in.</p>
+        <p class="shop-desc">Contract types, leverage and margin, sessions and pre-market gaps, NQ/ES/GC/CL/6B/6A, chart reading, auction market theory, futures strategies, entries, exits, economic calendar, and full risk management with futures-specific sizing rules.</p>
         <div class="shop-price">$39.99</div>
         <a class="btn btn-lg btn-primary" href="https://payhip.com/b/MgcB8" style="width:100%;justify-content:center">Get the course</a>
       </div>
       <div class="shop-card">
-        <div class="shop-type">Template</div>
-        <div class="shop-title">The Trader's Journal</div>
-        <p class="shop-desc">A spreadsheet template for logging trades, tracking R-multiples, and spotting patterns in your results. Pairs with the crash course's risk management chapter.</p>
-        <div class="shop-price">$12</div>
-        <a class="btn btn-lg btn-primary" href="https://payhip.com/b/6tTpe" style="width:100%;justify-content:center">Get the template</a>
-      </div>
-      <div class="shop-card">
-        <div class="shop-type">Guide</div>
+        <div class="shop-type">Guide · Advanced</div>
         <div class="shop-title">The Crash Playbook</div>
-        <p class="shop-desc">How to still make money while the market is crashing — a deep dive into one specific options method, the platform setup behind it, and the history, signals, and defense that surround it. Interactive, with read-aloud built in.</p>
+        <p class="shop-desc">One specific options method for profiting when the market falls — the platform setup, the signals that precede major crashes, the math, the history (2008, 2020, 2025), and the risk management rules that protect you if timing is off. Read the crash course first.</p>
         <div class="shop-price">$29.99</div>
         <a class="btn btn-lg btn-primary" href="https://payhip.com/b/ySeZj" style="width:100%;justify-content:center">Get the playbook</a>
       </div>
       <div class="shop-card">
-        <div class="shop-type">Ebook</div>
-        <div class="shop-title">The $100 Start</div>
-        <p class="shop-desc">How to put $100 to work across stocks, crypto, futures, and forex — day trading, swing trading, compounding, reinvesting, and the full framework for growing a small account.</p>
-        <div class="shop-price">$29.99</div>
-        <a class="btn btn-lg btn-primary" href="https://payhip.com/b/evYJL" style="width:100%;justify-content:center">Get the ebook</a>
+        <div class="shop-type">Template</div>
+        <div class="shop-title">The Trader's Journal</div>
+        <p class="shop-desc">A spreadsheet for logging every trade — entry, exit, R-multiple, setup type, and outcome. Spots patterns in your results over time and shows you exactly what's working and what isn't. Pairs with the risk management chapter in every course.</p>
+        <div class="shop-price">$12</div>
+        <a class="btn btn-lg btn-primary" href="https://payhip.com/b/6tTpe" style="width:100%;justify-content:center">Get the template</a>
       </div>
     </div>
   </div>
@@ -395,13 +607,13 @@
   <div class="community-glow" aria-hidden="true"></div>
   <div class="community-inner">
     <div class="sec-eyebrow">Community</div>
-    <h2>Trade ideas are better with company</h2>
+    <h2>The sharpest traders you know didn't figure it out alone.</h2>
     <p class="community-intro">A members-only Discord — plan trades together before the open, talk through them live during market hours, and recap after the close.</p>
     <div class="community-card cc-featured">
       <div class="cc-tag gold">Membership</div>
       <div class="cc-title">GreenSniperX Community</div>
-      <p class="cc-desc">Talk through setups before you take them, share live dialogue while the market's open, and debrief together afterward. Includes the Trader's Journal template, free.</p>
-      <div class="cc-price">$20<span style="font-size:0.85rem;font-weight:500">/mo</span></div>
+      <p class="cc-desc">Talk through setups before you take them, share live dialogue while the market's open, and debrief together afterward. Includes The Trader's Journal template, free.</p>
+      <div class="cc-price">$10<span style="font-size:0.85rem;font-weight:500">/mo</span></div>
       <a class="btn btn-lg btn-primary" href="https://payhip.com/b/Wse5Q">Join the community</a>
     </div>
   </div>
@@ -411,7 +623,7 @@
 <section class="nl-section" id="newsletter">
   <div class="nl-inner">
     <h2>Get the weekly radar in your inbox</h2>
-    <p>What we're watching, new library guides, and community updates — one email a week.</p>
+    <p>What we're watching, course updates, and community highlights — one email a week, no noise.</p>
     <form class="nl-form" onsubmit="return false">
       <input type="email" placeholder="you@email.com" required/>
       <button class="btn btn-lg btn-primary" type="submit">Subscribe</button>
@@ -428,7 +640,7 @@
   </div>
   <nav class="footer-nav" aria-label="Footer">
     <a href="#">Home</a>
-    <a href="#library">Library</a>
+    <a href="#library">Course Library</a>
     <a href="tools.html">Tools</a>
     <a href="#shop">Shop</a>
     <a href="#community">Community</a>
